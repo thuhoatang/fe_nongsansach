@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+.section_intro .banner-left img {
+    height: 500px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.title_module_main h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    color: #30660c;
+    text-shadow: 1px 0px 1px #CCCCCC, 0px 1px 1px #EEEEEE, 2px 1px 1px #CCCCCC, 1px 2px 1px #EEEEEE, 3px 2px 1px #CCCCCC, 2px 3px 1px #EEEEEE, 4px 3px 1px #CCCCCC, 3px 4px 1px #EEEEEE, 5px 4px 1px #CCCCCC, 4px 5px 1px #EEEEEE, 6px 5px 1px #CCCCCC, 5px 6px 1px #EEEEEE, 7px 6px 1px #CCCCCC;
+}
+
+.title_module_main h5 {
+    font-size: 40px;
+    font-weight: 350;
+    color: #468825;
+    margin: 25px 0px;
+}
+
+.content_module_main p {
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.content_module_main b {
+    font-family: 'Great Vibes', cursive;
+    font-size: 25px;
+    color: #468825;
+    font-weight: 600;
+}
+
+.img_intro_list .swiper-slide img {
+    width: 190px;
+    padding: 10px 10px;
+}
+
+.img_intro_list {
+    left: -200px;
+    position: relative;
+}

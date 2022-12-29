@@ -1,0 +1,16 @@
+img {
+    width: 15%;
+}
+
+.img_banner img {
+    width: 100%;
+}
+
+.img_banner {
+    position: relative;
+}
+
+.menu_header {
+    position: absolute;
+    padding: 0 200px;
+}

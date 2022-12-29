@@ -1,18 +1,16 @@
 import React from "react";
+import "./SearchBar.css";
 
 const SearchBar = () => {
   return (
     <>
-      <form class="d-flex">
+      <form className="d-flex">
         <input
-          class="form-control me-2"
+          className="me-2"
           type="search"
           placeholder="Search"
           aria-label="Search"
         />
-        <button class="btn btn-outline-success" type="submit">
-          Tìm kiếm
-        </button>
       </form>
     </>
   );
