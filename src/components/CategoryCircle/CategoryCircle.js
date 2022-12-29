@@ -1,6 +1,5 @@
 import React from "react";
 import "./CategoryCircle.css";
-import rau from "../../asset/img/rau.png";
 
 const CategoryCircle = (props) => {
   return (

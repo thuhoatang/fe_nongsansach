@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+.tab-product .tab-header h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
+    font-weight: 500;
+    color: #468825;
+}
+
+.tab-product .tab-header .nav-tab .sub-nav-tab {
+    margin: 10px 5px;
+    height: 50px;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 40px;
+    font-size: 15px;
+    color: #468825;
+    border: 1.5px solid #468825;
+    background: white
+}
+
+.active {
+    background: #468825 !important;
+    color: white !important;
+}
+
+.tab-listProduct {
+    width: 79.9%;
+}
