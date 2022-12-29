@@ -4,7 +4,7 @@ import quacam from "../../asset/img/quacam.png";
 
 const CardProduct = () => {
   return (
-    <a href="#" className="card-product">
+    <a href="#" className="card-product col">
       <div className="product-thumbnail text-center">
         <img src={quacam} />
         <p className="title_hethang">Hết hàng</p>

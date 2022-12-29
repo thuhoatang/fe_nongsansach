@@ -11,6 +11,8 @@ const ButtonCart = () => {
             icon="clarity:shopping-cart-line"
           ></iconify-icon>
         </button>
+
+        <div className="count_notification text-center">20</div>
       </div>
     </>
   );

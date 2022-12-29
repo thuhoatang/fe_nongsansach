@@ -9,7 +9,8 @@
 .btn_acc_hover {
     position: absolute;
     width: 200px;
-    /* height: 200px; */
+    left: 80%;
+    z-index: 99;
     right: -0px;
     background: #ffffff;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;

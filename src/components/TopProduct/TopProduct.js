@@ -7,8 +7,7 @@ const TopProduct = () => {
     <>
       <div className="top-product d-flex justify-content-center">
         <div className="header-top-product">Sản phẩm bán chạy</div>
-        <div className="d-flex justify-content-evenly">
-          <CardProduct />
+        <div className="d-flex">
           <CardProduct />
           <CardProduct />
           <CardProduct />

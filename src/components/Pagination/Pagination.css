@@ -1,0 +1,26 @@
+.pagination {
+    display: flex;
+    justify-content: center
+}
+
+.pagination div button {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    border: 2px #306304 solid;
+    margin: 0px auto;
+    color: #306304;
+    font-size: 13px;
+
+}
+
+.pagination div button a {
+    text-decoration: none;
+    color: #306304;
+}
+
+.active {
+    color: #ffffff !important;
+    background: #306304 !important
+}
