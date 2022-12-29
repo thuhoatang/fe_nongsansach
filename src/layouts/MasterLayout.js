@@ -5,6 +5,7 @@ const MasterLayout = (props) => {
   return (
     <>
       <Header />
+      <div className="body">{props.children}</div>
     </>
   );
 };
