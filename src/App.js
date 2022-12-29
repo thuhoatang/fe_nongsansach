@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import routes from "./constants/routers";
-
+import * as creategoryService from './service/categoryService';
 import MasterLayout from "./layouts/MasterLayout";
+import { useEffect } from "react";
 
 function App() {
   return (
