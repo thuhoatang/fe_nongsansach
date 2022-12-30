@@ -5,6 +5,12 @@ import MasterLayout from "./layouts/MasterLayout";
 import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const setup = async () => {
+
+    }
+    setup();
+  }, []);
   return (
     <>
       <BrowserRouter>
