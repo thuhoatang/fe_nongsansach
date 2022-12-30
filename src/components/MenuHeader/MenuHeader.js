@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "./MenuHeader.css";
 
-const MenuHeader = () => {
+const MenuHeader = ({ categories }) => {
   const [isHovering, setIsHovering] = useState(false);
+
   const handleMouseOver = () => {
     setIsHovering(true);
   };
@@ -10,15 +13,16 @@ const MenuHeader = () => {
   const handleMouseOut = () => {
     setIsHovering(false);
   };
+  const renderCategory = categories.map((category) => (<Link className="btn_submenu" key={category.id} to={`/categories/${category.id}`}>{category.name}</Link>));
   return (
     <>
       <div className="d-flex justify-content-around">
         <div className="tab_menu">
-          <a href="#">Trang chủ</a>
+          <Link to={'#'}>Trang chủ</Link>
         </div>
 
         <div className="tab_menu">
-          <a href="#">Giới thiệu</a>
+          <Link to={'#'}>Giới thiệu</Link>
         </div>
 
         <div
@@ -26,43 +30,39 @@ const MenuHeader = () => {
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
         >
-          <a href="#">Sản phẩm</a>
-
+          <Link to={'#'}>Sản phẩm</Link>
           {isHovering && (
             <div className="submenu_hover text-center">
-              <a className="btn_submenu" href="#">
-                Rau các loại
-              </a>
-              <a className="btn_submenu" href="#">
-                Củ các loại
-              </a>
-              <a className="btn_submenu" href="#">
-                Trái cây loại
-              </a>
-              <a className="btn_submenu" href="#">
-                Thịt các loại
-              </a>
-              <a className="btn_submenu" href="#">
-                Cá các loại
-              </a>
+              {renderCategory}
             </div>
           )}
         </div>
 
         <div className="tab_menu">
-          <a href="#">Đặt hàng</a>
+          <Link to={'#'}>Đặt hàng</Link>
+
         </div>
 
         <div className="tab_menu">
-          <a href="#">Tin tức</a>
+          <Link to={'#'}>Tin tức</Link>
+
         </div>
 
         <div className="tab_menu">
-          <a href="#">Liên hệ</a>
+          <Link to={'#'}>Liên hệ</Link>
+
+
         </div>
       </div>
     </>
   );
 };
 
-export default MenuHeader;
+const mapstateToProps = (state) => {
+  return {
+    categories: state.categories
+
+  };
+};
+export default connect(mapstateToProps, {})(MenuHeader);
+// export default MenuHeader;

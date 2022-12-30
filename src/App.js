@@ -3,8 +3,16 @@ import routes from "./constants/routers";
 import * as creategoryService from './service/categoryService';
 import MasterLayout from "./layouts/MasterLayout";
 import { useEffect } from "react";
+import { fetchCategories } from "./actions/categoryAction";
+import { connect } from "react-redux";
 
-function App() {
+function App({ fetchCategories }) {
+  useEffect(() => {
+    const setup = async () => {
+      fetchCategories();
+    }
+    setup();
+  }, []);
   return (
     <>
       <BrowserRouter>
@@ -27,5 +35,7 @@ function App() {
     </>
   );
 }
-
-export default App;
+export default connect(null, {
+  fetchCategories
+})(App);
+// export default App;
