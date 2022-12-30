@@ -1,0 +1,34 @@
+.product-header .product-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    border: 1px solid rgb(166, 166, 166);
+}
+
+.product-header .product-img img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.product-header {
+    width: 70%
+}
+
+.product-header p {
+    margin: 9px 0px 10px 20px;
+    font-size: 14px;
+}
+
+.product-header p span {
+    color: #f30202;
+    font-size: 16px;
+}
+
+.product-footer {
+    width: 30%;
+}
+
+.product-footer p {
+    margin-top: 40px;
+}
