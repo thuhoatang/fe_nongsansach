@@ -3,6 +3,7 @@ export const path = {
   quanLy: "quan-ly",
   chiTietSanPham: "san-pham/:id",
   chinhSuaSanPham: "chinh-sua/:id",
+  thanhToanGioHang: "thanh-toan",
 };
 
 export const categories = [
