@@ -19,12 +19,12 @@ const CardProduct = () => {
 
       {/* hidden hover */}
       <div className="product-action d-flex justify-content-evenly">
-        <a className="icon icon_showproduct">
+        <div className="icon icon_showproduct">
           <iconify-icon
             style={{ fontSize: "25px", color: "" }}
             icon="ph:eye"
           ></iconify-icon>
-        </a>
+        </div>
         <a className="icon icon_tymproduct">
           <iconify-icon
             style={{ fontSize: "25px", color: "" }}

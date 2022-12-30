@@ -9,7 +9,7 @@ const CategoryCircle = (props) => {
           <div className="category_item_img">
             <img src={props.src} />
             <div className="category_item_img_hidden">
-              <span className="count_sp">6</span>
+              <span className="count_sp">{props.quantity}</span>
               <br />
               <span className="name_sp">sản phẩm</span>
             </div>
