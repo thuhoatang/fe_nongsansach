@@ -17,14 +17,7 @@ const HomePage = ({ categories }) => {
     <>
       <div className="category_list d-flex justify-content-evenly">
         {categories.map((category) => (<CategoryCircle key={category.id} quantity={category.products_count} src={category.url_image} nameSP={category.name} />))}
-        {/* <CategoryCircle
-          src="https://images.unsplash.com/photo-1661956600655-e772b2b97db4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60"
-          nameSP="Rau"
-        />
-        <CategoryCircle src={cu} nameSP="Củ" />
-        <CategoryCircle src={traicay} nameSP="Trái cây" />
-        <CategoryCircle src={thit} nameSP="Thịt" />
-        <CategoryCircle src={ca} nameSP="Cá" /> */}
+
       </div>
 
       <div className="section_intro">

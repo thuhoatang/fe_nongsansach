@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import "./Pagination.css";
 
-const numbers = [1, 2, 3, 4];
-const Pagination = () => {
-  const [btnChecked, setBtnChecked] = useState(1);
-  const renderBtn = numbers.map((item, index) => {
+const Pagination = ({ current = 1, pages = 0, setPagination }) => {
+  const renderBtn = Array.from({ length: pages }, (value, index) => index + 1).map((item) => {
     return (
       <button
-        className={`mx-1 ${btnChecked == item ? "active" : ""}`}
-        onClick={() => setBtnChecked(item)}
+        className={`mx-1 ${current === item ? "active" : ""}`}
+        onClick={() => setPagination({ pages, current: item })}
       >
         {item}
       </button>
