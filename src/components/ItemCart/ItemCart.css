@@ -1,0 +1,70 @@
+.itemcart {
+    height: auto;
+    width: 100%;
+    /* border: 1px solid black; */
+    margin-top: 40px;
+}
+
+.itemcart .img-product img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.input-quanlity {
+    border-radius: 0px;
+    height: 28px;
+}
+
+.body-itemCart .name-product {
+    font-size: 15px;
+    margin-bottom: 5px
+}
+
+.body-itemCart .title-soLuong {
+    font-size: 13px;
+    margin-bottom: 3px
+}
+
+.body-itemCart .body-soLuong button {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgb(201, 201, 201);
+    background: transparent
+}
+
+.body-itemCart .body-soLuong span {
+    height: 28px;
+    width: 35px;
+    display: block;
+    border-top: 1px solid rgb(201, 201, 201);
+    border-bottom: 1px solid rgb(201, 201, 201);
+    ;
+    font-size: 14px;
+    padding-top: 3px
+}
+
+.footer-itemcart .price {
+    font-size: 15px;
+    font-weight: bold;
+    color: #339538;
+    margin-bottom: 0px
+}
+
+.footer-itemcart {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+
+.footer-itemcart .btn-xoa {
+    margin-bottom: 0px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #f31207e0;
+    border: none;
+    background: transparent
+}
