@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import ItemCart from "../ItemCart/ItemCart";
 import "./Cart.css";
 
@@ -53,4 +54,5 @@ const Cart = ({ setClicked, items }) => {
   );
 };
 
-export default Cart;
+
+export default connect()(Cart);

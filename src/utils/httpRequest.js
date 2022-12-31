@@ -22,11 +22,15 @@ export const get = async (path, options = {}) => {
 export const post = async (path, options = {}) => {
     const api_token = localStorage.getItem('api_token');
     let data = { ...options.data, api_token, '_method': 'post' };
-    let optionsPro = { ...options, data: data };
-
 
     const response = await httpRequest.post(path, data);
     return response.data;
 };
+export const patch = async (path, options = {}) => {
+    const api_token = localStorage.getItem('api_token');
+    let data = { ...options.data, api_token, '_method': 'patch' };
 
+    const response = await httpRequest.post(path, data);
+    return response.data;
+};
 export default httpRequest;

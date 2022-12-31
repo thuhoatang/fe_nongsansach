@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./ItemCart.css";
 import rau from "../../asset/img/quacam.png";
-const ItemCart = ({ item }) => {
+import { connect } from "react-redux";
+import { changeCartItemAction } from "../../actions/cartItemAction";
+const ItemCart = ({ item, changeCartItemAction }) => {
   // const [quantity, setQuantity] = useState(10);
 
   // const onClick = (number) => {
   //   setQuantity(quantity + number);
   // };
-
   return (
     <div className="itemcart d-flex justify-content-around">
       <div className="img-product">
@@ -22,7 +23,7 @@ const ItemCart = ({ item }) => {
             <button
               className="btn-giam"
               onClick={() => {
-                // onClick(-1);
+                changeCartItemAction(item.id, item.quantity - 1)
               }}
             >
               -
@@ -31,7 +32,7 @@ const ItemCart = ({ item }) => {
             <button
               className="btn-tang"
               onClick={() => {
-                // onClick(1);
+                changeCartItemAction(item.id, item.quantity + 1)
               }}
             >
               +
@@ -48,4 +49,4 @@ const ItemCart = ({ item }) => {
   );
 };
 
-export default ItemCart;
+export default connect(null, { changeCartItemAction })(ItemCart);
