@@ -5,11 +5,16 @@ import MasterLayout from "./layouts/MasterLayout";
 import { useEffect } from "react";
 import { fetchCategories } from "./actions/categoryAction";
 import { connect } from "react-redux";
+import { checkAuth } from "./service/authService";
 
-function App({ fetchCategories }) {
+function App({
+  fetchCategories,
+  checkAuth
+}) {
   useEffect(() => {
     const setup = async () => {
       fetchCategories();
+      checkAuth();
     }
     setup();
   }, []);
@@ -36,6 +41,6 @@ function App({ fetchCategories }) {
   );
 }
 export default connect(null, {
-  fetchCategories
+  fetchCategories, checkAuth
 })(App);
 // export default App;
