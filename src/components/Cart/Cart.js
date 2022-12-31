@@ -2,7 +2,17 @@ import React from "react";
 import ItemCart from "../ItemCart/ItemCart";
 import "./Cart.css";
 
-const Cart = ({ setClicked }) => {
+
+const Cart = ({ setClicked, items }) => {
+
+  let total = 0;
+  const render = items.map((item) => {
+    total += item.quantity * item.product.price;
+
+    return < ItemCart key={item.id} item={item} />
+  })
+
+
   return (
     <div className="bundle-cart" onClick={() => setClicked(false)}>
       <div
@@ -24,14 +34,7 @@ const Cart = ({ setClicked }) => {
 
         <div className="body-cart">
           <div class="ex3">
-            <ItemCart />
-            <ItemCart />
-            <ItemCart />
-            <ItemCart />
-            <ItemCart />
-            <ItemCart />
-            <ItemCart />
-            <ItemCart />
+            {render}
           </div>
         </div>
 
@@ -39,7 +42,7 @@ const Cart = ({ setClicked }) => {
           <p>
             <b>Tổng tiền:</b>
           </p>
-          <p className="tongtien">45.000.000 đ</p>
+          <p className="tongtien">{new Intl.NumberFormat().format(total).replaceAll(',', ' ')} đ</p>
         </div>
 
         <div className="footer-cart text-center">
