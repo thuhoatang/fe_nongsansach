@@ -7,8 +7,9 @@ import banner_img from "../../asset/img/banner_home.png";
 import ButtonAccount from "../ButtonAccount/ButtonAccount";
 import ButtonCart from "../ButtonCart/ButtonCart";
 import MenuHeader from "../MenuHeader/MenuHeader";
+import { connect } from "react-redux";
 
-const Header = () => {
+const Header = ({ auth }) => {
   return (
     <>
       <nav className="navbar navbar-light bg-white">
@@ -21,7 +22,8 @@ const Header = () => {
 
           <div className="d-flex px-5">
             <ButtonAccount />
-            <ButtonCart />
+            {auth == null ? "" : (auth.error != undefined ? "" : <ButtonCart />)}
+
           </div>
         </div>
       </nav>
@@ -36,4 +38,10 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapstateToProps = (state) => {
+  return {
+    auth: state.auth
+
+  };
+};
+export default connect(mapstateToProps, {})(Header);
