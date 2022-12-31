@@ -2,6 +2,7 @@ import ManageLayout from "../layouts/ManageLayout";
 import MasterLayout from "../layouts/MasterLayout";
 import DanhMucSanPham from "../pages/DanhMucSanPham/DanhMucSanPham";
 import HomePage from "../pages/HomePage/HomePage";
+import Login from "../pages/Login/Login";
 import Payment from "../pages/Payment/Payment";
 import { path } from "./string";
 
@@ -12,6 +13,7 @@ const routes = [
     component: HomePage,
     layout: MasterLayout,
     pageUrl: path.trangChu,
+
   },
 
   {
@@ -23,11 +25,20 @@ const routes = [
   },
 
   {
+
     path: path.danhMucSanPham,
     exact: true,
     component: DanhMucSanPham,
     layout: MasterLayout,
     pageUrl: path.danhMucSanPham,
+},
+{
+    path: path.signIn,
+    exact: true,
+    component: Login,
+    layout: MasterLayout,
+    pageUrl: path.signIn,
+
   },
 ];
 

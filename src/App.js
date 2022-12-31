@@ -1,15 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import routes from "./constants/routers";
 import * as creategoryService from './service/categoryService';
-import MasterLayout from "./layouts/MasterLayout";
 import { useEffect } from "react";
 import { fetchCategories } from "./actions/categoryAction";
+import { checkAuthAction } from './actions/authAction'
 import { connect } from "react-redux";
 
-function App({ fetchCategories }) {
+function App({
+  fetchCategories,
+  checkAuthAction
+}) {
   useEffect(() => {
     const setup = async () => {
       fetchCategories();
+      checkAuthAction();
     }
     setup();
   }, []);
@@ -36,6 +40,6 @@ function App({ fetchCategories }) {
   );
 }
 export default connect(null, {
-  fetchCategories
+  fetchCategories, checkAuthAction
 })(App);
 // export default App;

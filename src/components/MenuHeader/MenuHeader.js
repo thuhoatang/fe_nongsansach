@@ -18,7 +18,7 @@ const MenuHeader = ({ categories }) => {
     <>
       <div className="d-flex justify-content-around">
         <div className="tab_menu">
-          <Link to={'#'}>Trang chủ</Link>
+          <Link to={'/trang-chu'}>Trang chủ</Link>
         </div>
 
         <div className="tab_menu">
