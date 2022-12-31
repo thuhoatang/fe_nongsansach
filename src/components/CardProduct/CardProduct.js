@@ -4,9 +4,9 @@ import quacam from "../../asset/img/quacam.png";
 
 const CardProduct = ({ product = { name: "#", price: 0 } }) => {
   return (
-    <a href="#" className="card-product col">
+    <a href="#" className="card-product">
       <div className="product-thumbnail text-center">
-        <img alt='' src={product?.medias?.[0]?.url ?? quacam} />
+        <img alt="" src={product?.medias?.[0]?.url ?? quacam} />
         <p className="title_hethang">Hết hàng</p>
       </div>
 
@@ -14,7 +14,10 @@ const CardProduct = ({ product = { name: "#", price: 0 } }) => {
         <a href="#" className="title_product">
           {product.name}
         </a>
-        <p className="price  my-2">{new Intl.NumberFormat().format(product.price).replaceAll(',', ' ')} &#8363;</p>
+        <p className="price  my-2">
+          {new Intl.NumberFormat().format(product.price).replaceAll(",", " ")}{" "}
+          &#8363;
+        </p>
       </div>
 
       {/* hidden hover */}
