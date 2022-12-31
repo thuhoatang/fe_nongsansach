@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import Cart from "../Cart/Cart";
 import "./ButtonCart.css";
 
-const ButtonCart = () => {
+const ButtonCart = ({ cart }) => {
   const [clicked, setClicked] = useState(false);
   return (
     <>
@@ -19,12 +20,17 @@ const ButtonCart = () => {
           ></iconify-icon>
         </button>
 
-        <div className="count_notification text-center">20</div>
+        <div className="count_notification text-center">{cart.amount}</div>
       </div>
 
-      {clicked ? <Cart setClicked={setClicked} /> : ""}
+      {clicked ? <Cart items={cart.items} setClicked={setClicked} /> : ""}
     </>
   );
 };
 
-export default ButtonCart;
+const mapstateToProps = (state) => {
+  return {
+    cart: state.cart
+  };
+};
+export default connect(mapstateToProps, {})(ButtonCart);
