@@ -11,14 +11,16 @@ export const signInAction = (values) => async (dispatch, getState) => {
 
 export const checkAuthAction = (values) => async (dispatch, getState) => {
     const data = await checkAuth();
-    if (data !== false) {
-
+    if (data.error !== false) {
+        console.log(data !== false);
         dispatch({
             type: statusAction.auth.SIGN_IN,
-            payload: data,
+            payload: data.profile,
         });
-
+        dispatch({
+            type: statusAction.cart.CART_FETCH,
+            payload: data.cart,
+        });
     }
-    console.log(data);
 
 }
