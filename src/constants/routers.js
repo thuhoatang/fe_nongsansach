@@ -12,6 +12,7 @@ const routes = [
     component: HomePage,
     layout: MasterLayout,
     pageUrl: path.trangChu,
+
   },
 
   {
@@ -28,7 +29,6 @@ const routes = [
     component: Login,
     layout: MasterLayout,
     pageUrl: path.signIn,
-
   },
 ];
 
