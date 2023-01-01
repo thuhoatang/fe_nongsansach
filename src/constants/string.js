@@ -4,7 +4,7 @@ export const path = {
   chiTietSanPham: "san-pham/:id",
   chinhSuaSanPham: "chinh-sua/:id",
   thanhToanGioHang: "thanh-toan",
-  danhMucSanPham: "danh-muc",
+  danhMucSanPham: "danh-muc/:danhmuc_id",
   signIn: "signin",
 
 };

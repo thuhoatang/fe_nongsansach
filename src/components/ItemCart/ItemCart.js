@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ItemCart.css";
 import rau from "../../asset/img/quacam.png";
 import { connect } from "react-redux";
 import { changeCartItemAction } from "../../actions/cartItemAction";
 const ItemCart = ({ item, changeCartItemAction }) => {
-  // const [quantity, setQuantity] = useState(10);
+  const [quantity, setQuantity] = useState(item.quantity);
+  const [idTimeOut, setIDTimeOut] = useState(item.quantity);
 
-  // const onClick = (number) => {
-  //   setQuantity(quantity + number);
-  // };
+  const onClick = (number) => {
+    setQuantity(number);
+    clearTimeout(idTimeOut)
+    setIDTimeOut(setTimeout(() => { console.log(123); changeCartItemAction(item.id, number); }, 400))
+  };
+
   return (
     <div className="itemcart d-flex justify-content-around">
       <div className="img-product">
@@ -23,16 +27,16 @@ const ItemCart = ({ item, changeCartItemAction }) => {
             <button
               className="btn-giam"
               onClick={() => {
-                changeCartItemAction(item.id, item.quantity - 1)
+                onClick(quantity - 1)
               }}
             >
               -
             </button>
-            <span>{item.quantity}</span>
+            <span>{quantity}</span>
             <button
               className="btn-tang"
               onClick={() => {
-                changeCartItemAction(item.id, item.quantity + 1)
+                onClick(quantity + 1)
               }}
             >
               +
@@ -42,8 +46,8 @@ const ItemCart = ({ item, changeCartItemAction }) => {
       </div>
 
       <div className="footer-itemcart">
-        <p className="price">{new Intl.NumberFormat().format(item.quantity * item.product.price).replaceAll(',', ' ')} đ</p>
-        <button className="btn-xoa">Xóa</button>
+        <p className="price">{new Intl.NumberFormat().format(quantity * item.product.price).replaceAll(',', ' ')} đ</p>
+        <button className="btn-xoa" onClick={() => changeCartItemAction(item.id, 0)}>Xóa</button>
       </div>
     </div>
   );

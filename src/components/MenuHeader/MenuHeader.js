@@ -13,7 +13,7 @@ const MenuHeader = ({ categories }) => {
   const handleMouseOut = () => {
     setIsHovering(false);
   };
-  const renderCategory = categories.map((category) => (<Link className="btn_submenu" key={category.id} to={`/categories/${category.id}`}>{category.name}</Link>));
+  const renderCategory = categories.map((category) => (<Link className="btn_submenu" key={category.id} to={`/danh-muc/${category.id}`}>{category.name}</Link>));
   return (
     <>
       <div className="d-flex justify-content-around">
