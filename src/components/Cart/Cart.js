@@ -1,11 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { expandedCartAction } from "../../actions/cartItemAction";
 import ItemCart from "../ItemCart/ItemCart";
 import "./Cart.css";
 
 
 const Cart = ({ setClicked, items, expandedCartAction }) => {
+
+  const navigate = useNavigate();
 
   let total = 0;
   const render = items.map((item) => {
@@ -48,7 +51,7 @@ const Cart = ({ setClicked, items, expandedCartAction }) => {
         </div>
 
         <div className="footer-cart text-center">
-          <button className="btn_thanhToan">Thanh toán</button>
+          <button onClick={() => navigate('/thanh-toan')} className="btn_thanhToan">Thanh toán</button>
         </div>
       </div>
     </div>

@@ -10,8 +10,7 @@ const ItemCart = ({ item, changeCartItemAction }) => {
   const onClick = (number) => {
     setQuantity(number);
     clearTimeout(idTimeOut)
-    setIDTimeOut(setTimeout(() => { console.log(123); changeCartItemAction(item.id, number); }, 1000))
-
+    setIDTimeOut(setTimeout(() => { console.log(123); changeCartItemAction(item.id, number); }, 400))
   };
 
   return (
@@ -48,7 +47,7 @@ const ItemCart = ({ item, changeCartItemAction }) => {
 
       <div className="footer-itemcart">
         <p className="price">{new Intl.NumberFormat().format(quantity * item.product.price).replaceAll(',', ' ')} đ</p>
-        <button className="btn-xoa">Xóa</button>
+        <button className="btn-xoa" onClick={() => changeCartItemAction(item.id, 0)}>Xóa</button>
       </div>
     </div>
   );

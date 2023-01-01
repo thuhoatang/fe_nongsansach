@@ -2,8 +2,15 @@ import React from "react";
 import "./ThanhToan.css";
 import ThongTinNguoiNhan from "../ThongTinNguoiNhan/ThongTinNguoiNhan";
 import ItemProductThanhToan from "../ItemProductThanhToan/ItemProductThanhToan";
+import { connect } from "react-redux";
 
-const ThanhToan = () => {
+const ThanhToan = ({ cart }) => {
+  let total = 0
+  const renderItems = cart.items.map((item) => {
+    total += item.product.price * item.quantity
+    return <ItemProductThanhToan values={item} />
+
+  })
   return (
     <div className="thanhtoan d-flex justify-content-between ">
       <div className="thanhtoan-left">
@@ -25,11 +32,8 @@ const ThanhToan = () => {
 
         <div className="thanhtoan-right-product">
           <div className="list-product">
-            <ItemProductThanhToan />
-            <ItemProductThanhToan />
-            <ItemProductThanhToan />
-            <ItemProductThanhToan />
-            <ItemProductThanhToan />
+            {renderItems}
+
           </div>
         </div>
 
@@ -39,12 +43,11 @@ const ThanhToan = () => {
               {" "}
               <b>Tạm tính</b>
             </p>
-            <p className="tamTinh-gia">4 500 000 đ</p>
+            <p className="tamTinh-gia">{new Intl.NumberFormat().format(total).replaceAll(",", " ")} đ</p>
           </div>
 
           <div className="phiVanChuyen d-flex justify-content-between mx-3">
             <p className="phiVanChuyen-title">
-              {" "}
               <b>Phí vận chuyển</b>
             </p>
             <p className="phiVanChuyen-gia">25.000 đ</p>
@@ -76,4 +79,7 @@ const ThanhToan = () => {
   );
 };
 
-export default ThanhToan;
+const mapStatetoProps = (state) => {
+  return { cart: state.cart }
+}
+export default connect(mapStatetoProps, {})(ThanhToan);
