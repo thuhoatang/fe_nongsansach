@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "./Pagination.css";
 
 const Pagination = ({ current = 1, pages = 0, setPagination }) => {
+
   const renderBtn = Array.from({ length: pages }, (value, index) => index + 1).map((item) => {
     return (
       <button
+        key={item}
         className={`mx-1 ${current === item ? "active" : ""}`}
         onClick={() => setPagination({ pages, current: item })}
       >
@@ -12,6 +14,7 @@ const Pagination = ({ current = 1, pages = 0, setPagination }) => {
       </button>
     );
   });
+
   return (
     <div className="pagination">
       <div>

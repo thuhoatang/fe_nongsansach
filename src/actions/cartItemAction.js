@@ -11,3 +11,15 @@ export const changeCartItemAction = (id, amountChange) => async (dispatch, getSt
 
 
 }
+
+export const expandedCartAction = (data) => {
+
+    return {
+        type: statusAction.cart.EXPANDED,
+        payload: data,
+    };
+
+
+}
+
+

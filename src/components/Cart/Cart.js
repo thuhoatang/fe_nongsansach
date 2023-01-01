@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import { expandedCartAction } from "../../actions/cartItemAction";
 import ItemCart from "../ItemCart/ItemCart";
 import "./Cart.css";
 
 
-const Cart = ({ setClicked, items }) => {
+const Cart = ({ setClicked, items, expandedCartAction }) => {
 
   let total = 0;
   const render = items.map((item) => {
@@ -15,7 +16,7 @@ const Cart = ({ setClicked, items }) => {
 
 
   return (
-    <div className="bundle-cart" onClick={() => setClicked(false)}>
+    <div className="bundle-cart" onClick={() => expandedCartAction(false)}>
       <div
         className="cart"
         onClick={(e) => {
@@ -27,7 +28,7 @@ const Cart = ({ setClicked, items }) => {
           <h5>GIỎ HÀNG</h5>
           <button
             className="icon-exit border-0"
-            onClick={() => setClicked(false)}
+            onClick={() => expandedCartAction(false)}
           >
             <iconify-icon icon="iwwa:delete"></iconify-icon>
           </button>
@@ -53,6 +54,9 @@ const Cart = ({ setClicked, items }) => {
     </div>
   );
 };
-
-
-export default connect()(Cart);
+const mapstateToProps = (state) => {
+  return {
+    cart: state.cart
+  };
+};
+export default connect(mapstateToProps, { expandedCartAction })(Cart);

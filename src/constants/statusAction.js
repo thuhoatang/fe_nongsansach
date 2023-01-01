@@ -7,7 +7,9 @@ const statusAction = {
         CHECK_AUTH: 'CHECK_AUTH'
     },
     cart: {
-        CART_FETCH: 'CART_FETCH'
+        CART_FETCH: 'CART_FETCH',
+        EXPANDED: 'EXPANDED'
+
     }
 }
 export default statusAction;

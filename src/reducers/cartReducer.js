@@ -1,13 +1,15 @@
 import statusAction from "../constants/statusAction";
 
-const initValue = [];
+const initValue = { items: [], amount: 0, expanded: false };
 
 
-const cartReducer = (state = { items: [], amount: 0 }, action) => {
+const cartReducer = (state = initValue, action) => {
     switch (action.type) {
-        case statusAction.cart.CART_FETCH:
-            return action.payload
+        case statusAction.cart.EXPANDED:
 
+            return { ...state, expanded: action.payload ?? (!state.expanded) }
+        case statusAction.cart.CART_FETCH:
+            return { ...state, ...action.payload }
         default:
             return state;
     }
