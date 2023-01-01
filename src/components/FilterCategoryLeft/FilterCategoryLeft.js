@@ -8,21 +8,27 @@ import sao5 from "../../asset/img/5sao.png";
 import banner from "../../asset/img/banner-4.png";
 import bannerFooter from "../../asset/img/footer-banner.png";
 
-const FilterCategoryLeft = () => {
+const FilterCategoryLeft = ({ onClickBtnApplay, price, setPrice }) => {
   return (
     <div className="">
-      <button className="submit-filter">Áp dụng</button>
+      <button onClick={() => onClickBtnApplay()} className="submit-filter">Áp dụng</button>
       <div className="fisrt-left-category">
         <p>
           {" "}
           <b>Lọc giá sản phẩm</b>
         </p>
-        <input className="inputText1" placeholder="1 000 000 VND" />
+        <input className="inputText1" type='number' placeholder="1 000 000 VND" value={price.start}
+          onChange={(e) => {
+            setPrice({ ...price, start: e.target.value })
+          }} />
         <iconify-icon
           icon="pajamas:dash"
           style={{ position: "relative", top: "3px", margin: "0px 2px" }}
         ></iconify-icon>
-        <input className="inputText2" placeholder="12 000 000 VND" />
+        <input className="inputText2" type='number' placeholder="12 000 000 VND" value={price.end}
+          onChange={(e) => {
+            setPrice({ ...price, end: e.target.value })
+          }} />
         <p>
           Giá: Từ <span>300.000 vnd</span> đến <span>4.000.000 vnd</span>
         </p>

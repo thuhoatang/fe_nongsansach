@@ -12,7 +12,6 @@ export const signInAction = (values) => async (dispatch, getState) => {
 export const checkAuthAction = (values) => async (dispatch, getState) => {
     const data = await checkAuth();
     if (data.error !== false) {
-        console.log(data !== false);
         dispatch({
             type: statusAction.auth.SIGN_IN,
             payload: data.profile,
