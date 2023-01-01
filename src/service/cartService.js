@@ -13,3 +13,15 @@ export const patchCartItem = async (id = 0, amountChange) => {
 
     }
 }
+
+export const addCartItem = async (id = 0, amount = 1) => {
+    try {
+        const res = await httpRequest.post('cart_item', {
+            data: { quantity: amount, product_id: id }
+        })
+        return res;
+    } catch (error) {
+        console.log(error);
+
+    }
+}

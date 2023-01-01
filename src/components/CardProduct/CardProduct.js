@@ -1,10 +1,12 @@
 import React from "react";
 import "./CardProduct.css";
 import quacam from "../../asset/img/quacam.png";
+import { connect } from "react-redux";
+import { addCartItemAction } from "../../actions/cartItemAction";
 
-const CardProduct = ({ product = { name: "#", price: 0 } }) => {
+const CardProduct = ({ product = { name: "#", price: 0 }, addCartItemAction }) => {
   return (
-    <a href="#" className="card-product">
+    <div className="card-product">
       <div className="product-thumbnail text-center">
         <img alt="" src={product?.medias?.[0]?.url ?? quacam} />
         <p className="title_hethang">Hết hàng</p>
@@ -34,15 +36,15 @@ const CardProduct = ({ product = { name: "#", price: 0 } }) => {
             icon="ph:heart"
           ></iconify-icon>
         </a>
-        <a className="icon icon_cart">
+        <div className="icon icon_cart" onClick={() => { addCartItemAction(product.id, 1) }}>
           <iconify-icon
             style={{ fontSize: "25px", color: "" }}
             icon="raphael:cart"
           ></iconify-icon>
-        </a>
+        </div>
       </div>
-    </a>
+    </div>
   );
 };
 
-export default CardProduct;
+export default connect(null, { addCartItemAction })(CardProduct);
