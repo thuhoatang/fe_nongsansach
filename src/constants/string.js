@@ -5,6 +5,8 @@ export const path = {
   chinhSuaSanPham: "chinh-sua/:id",
   thanhToanGioHang: "thanh-toan",
   danhMucSanPham: "danh-muc",
+  signIn: "signin",
+
 };
 
 export const categories = [

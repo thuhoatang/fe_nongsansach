@@ -25,9 +25,7 @@ const ButtonAccount = () => {
 
         {isHovering && (
           <div className="btn_acc_hover text-center">
-            <Link className="btn_account" to="#">
-              Đăng nhập
-            </Link>
+
             <Link className="btn_account" to="#">
               Đăng ký
             </Link>
