@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { getDistricts, getFeeDelivery, getProvinces, getShippingMethod, getWards } from "../../service/deliveryService";
 import "./ThongTinNguoiNhan.css";
 
-const ThongTinNguoiNhan = ({ weight, setFee }) => {
+const ThongTinNguoiNhan = ({ weight, setFee, setInfoInvoice, infoInvoice }) => {
   const [provinces, setProvinces] = useState({ selected: 'true', items: [] });
   const [districts, setDistricts] = useState({ selected: 'true', items: [] });
   const [wards, setWards] = useState({ selected: 'true', items: [] });
-
   useEffect(() => {
     const getData = async () => {
       const data = await getProvinces();
@@ -70,35 +69,43 @@ const ThongTinNguoiNhan = ({ weight, setFee }) => {
       <div className="body-thongtinnhanhang">
         <div className="div-input">
           <p>Email</p>
-          <input
+          <input value={infoInvoice.email} onChange={(e) => setInfoInvoice({ ...infoInvoice, email: e.target.value })}
             className="input-thongtinnhanhang mb-2"
             placeholder="Nhập email"
           />
         </div>
         <div className="div-input">
           <p>Họ và tên</p>
-          <input
+          <input value={infoInvoice.name} onChange={(e) => setInfoInvoice({ ...infoInvoice, name: e.target.value })}
             className="input-thongtinnhanhang mb-2"
             placeholder="Nhập họ và tên"
           />
         </div>
         <div className="div-input">
           <p>Số điện thoại</p>
-          <input
+          <input value={infoInvoice.phone} onChange={(e) => setInfoInvoice({ ...infoInvoice, phone: e.target.value })}
             className="input-thongtinnhanhang mb-2"
             placeholder="Nhập số điện thoại"
           />
         </div>
         <div className="div-input">
           <p>Địa chỉ tùy chọn</p>
-          <input
+          <input value={infoInvoice.address} onChange={(e) => {
+            setInfoInvoice({ ...infoInvoice, address: e.target.value })
+
+          }}
             className="input-thongtinnhanhang mb-2"
             placeholder="Nhập địa chỉ"
           />
         </div>
         <div className="div-input">
           <p>Chọn tỉnh/ thành phố</p>
-          <select value={provinces.selected} className="" aria-label="Default select example" onChange={(e) => setProvinces({ ...provinces, selected: e.target.value })}>
+          <select value={provinces.selected} className="" aria-label="Default select example"
+            onChange={(e) => {
+              setProvinces({ ...provinces, selected: e.target.value })
+              setInfoInvoice({ ...infoInvoice, province_id: e.target.value })
+
+            }}>
             <option value={true} >Chọn tỉnh\thành phố</option>
             {provinces.items.map((item) => <option key={item.ProvinceID} value={item.ProvinceID}>{item.ProvinceName}</option>)}
           </select>
@@ -106,7 +113,14 @@ const ThongTinNguoiNhan = ({ weight, setFee }) => {
 
         <div className="div-input">
           <p>Chọn quận/ huyện</p>
-          <select value={districts.selected} className="" aria-label="Default select example" onChange={(e) => setDistricts({ ...districts, selected: e.target.value })}>
+          <select value={districts.selected} className="" aria-label="Default select example"
+            onChange={(e) => {
+              setDistricts({ ...districts, selected: e.target.value })
+              setInfoInvoice({ ...infoInvoice, district_id: e.target.value })
+
+            }
+
+            }>
             <option value={true}>Chọn quận/huyện</option>
             {districts.items.map((item) => <option key={item.DistrictID} value={item.DistrictID}>{item.DistrictName}</option>)}
 
@@ -115,7 +129,10 @@ const ThongTinNguoiNhan = ({ weight, setFee }) => {
 
         <div className="div-input">
           <p>Chọn phường/ xã</p>
-          <select value={wards.selected} onChange={(e) => setWards({ ...wards, selected: e.target.value })} className="" aria-label="Default select example">
+          <select value={wards.selected} onChange={(e) => {
+            setWards({ ...wards, selected: e.target.value })
+            setInfoInvoice({ ...infoInvoice, ward_id: e.target.value })
+          }} className="" aria-label="Default select example">
             <option value={true}>Chọn phường/xã</option>
             {wards.items.map((item) => <option key={item.WardCode} value={item.WardCode}>{item.WardName}</option>)}
 

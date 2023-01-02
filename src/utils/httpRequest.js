@@ -3,8 +3,8 @@ import axios from 'axios';
 const httpRequest = axios.create({
     baseURL: 'http://127.0.0.1:8000/api/',
     validateStatus: function (status) {
-        if (status === 401 && '/signin' !== window.location.pathname)
-            window.location.href = "/signin";
+        // if (status === 401 && '/signin' !== window.location.pathname)
+        //     window.location.href = "/signin";
         if (status < 500) return true;
 
     }
@@ -22,7 +22,7 @@ export const get = async (path, options = {}) => {
 export const post = async (path, options = {}) => {
     const api_token = localStorage.getItem('api_token');
     let data = { ...options.data, api_token, '_method': 'post' };
-
+    console.log(data);
     const response = await httpRequest.post(path, data);
     return response.data;
 };
