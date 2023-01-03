@@ -1,20 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ThanhToan.css";
 import ThongTinNguoiNhan from "../ThongTinNguoiNhan/ThongTinNguoiNhan";
 import ItemProductThanhToan from "../ItemProductThanhToan/ItemProductThanhToan";
 import { connect } from "react-redux";
+import { payment } from "../../service/paymentService";
+import { useNavigate } from "react-router-dom";
 
 const ThanhToan = ({ cart }) => {
+  const [fee, setFee] = useState(0);
+  const [infoInvoice, setInfoInvoice] = useState({})
+  const navigate = useNavigate();
   let total = 0
+  let weight = 0;
   const renderItems = cart.items.map((item) => {
     total += item.product.price * item.quantity
-    return <ItemProductThanhToan values={item} />
+    weight += item.quantity;
+    return <ItemProductThanhToan key={item.id} values={item} />
 
   })
+
+
+  const onCLickSubmit = async () => {
+    const error = {};
+    if (Object.keys(error).length === 0) {
+      const response = await payment(infoInvoice);
+      navigate('/don-hang/' + response.id);
+
+    }
+  }
+
   return (
     <div className="thanhtoan d-flex justify-content-between ">
       <div className="thanhtoan-left">
-        <ThongTinNguoiNhan />
+        <ThongTinNguoiNhan weight={weight} setFee={setFee} setInfoInvoice={setInfoInvoice} infoInvoice={infoInvoice} />
       </div>
 
       <div className="thanhtoan-body">
@@ -50,7 +68,7 @@ const ThanhToan = ({ cart }) => {
             <p className="phiVanChuyen-title">
               <b>Phí vận chuyển</b>
             </p>
-            <p className="phiVanChuyen-gia">25.000 đ</p>
+            <p className="phiVanChuyen-gia">{new Intl.NumberFormat().format(fee).replaceAll(",", " ")} đ</p>
           </div>
         </div>
 
@@ -60,19 +78,19 @@ const ThanhToan = ({ cart }) => {
               {" "}
               <b>Tổng cộng</b>
             </p>
-            <p className="tongTien-gia">25.000.000 đ</p>
+            <p className="tongTien-gia">{new Intl.NumberFormat().format(total + fee).replaceAll(",", " ")} đ</p>
           </div>
         </div>
 
         <div className="action-thanhToan d-flex justify-content-between mx-3">
-          <a href="#" className="back-cart">
+          <div className="back-cart">
             <iconify-icon
               icon="ion:caret-back-outline"
               style={{ color: "#14606c", position: "relative", top: "2px" }}
             ></iconify-icon>
             Quay về giỏ hàng
-          </a>
-          <button className="submit-thanhToan">Đặt hàng</button>
+          </div>
+          <button onClick={() => onCLickSubmit()} className="submit-thanhToan">Đặt hàng</button>
         </div>
       </div>
     </div>
