@@ -46,17 +46,27 @@ const OrderDetail = () => {
         </table>
       </div>
 
-      <div className="">
+      <div className="info-user d-flex">
         <div className="dia-chi">
           <p>
             {" "}
-            <b>Tăng Thị Thu Hòa</b>
+            Họ và tên: <span>Tăng Thị Thu Hòa</span>
           </p>
           <p>
             Địa chỉ: <span>dabc, Thanh Sơn, Đà Nẵng</span>
           </p>
           <p>
             Số điện thoại: <span>09 81274 7347</span>
+          </p>
+        </div>
+
+        <div className="tong-thanh-toan">
+          <p>
+            {" "}
+            Phí vận chuyển: <span>40.000 đ</span>
+          </p>
+          <p>
+            Tổng tiền: <span className="text-danger">234 000 đ</span>
           </p>
         </div>
       </div>
