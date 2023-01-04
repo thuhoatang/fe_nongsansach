@@ -6,7 +6,9 @@ export const path = {
   thanhToanGioHang: "thanh-toan",
   danhMucSanPham: "danh-muc/:danhmuc_id",
   signIn: "signin",
-
+  personal: "ca-nhan",
+  yourOrder: "ca-nhan/don-hang",
+  orderDetail: "don-hang/:id",
 };
 
 export const categories = [
