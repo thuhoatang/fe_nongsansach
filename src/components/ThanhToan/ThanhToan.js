@@ -32,7 +32,7 @@ const ThanhToan = ({ cart }) => {
   return (
     <div className="thanhtoan d-flex justify-content-between ">
       <div className="thanhtoan-left">
-        <ThongTinNguoiNhan weight={weight} setFee={setFee} setInfoInvoice={setInfoInvoice} infoInvoice={infoInvoice} />
+        <ThongTinNguoiNhan weight={weight * 1000} setFee={setFee} setInfoInvoice={setInfoInvoice} infoInvoice={infoInvoice} />
       </div>
 
       <div className="thanhtoan-body">

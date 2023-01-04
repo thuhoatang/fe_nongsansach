@@ -3,26 +3,20 @@ import "./SlideProduct.css";
 import rau from "../../asset/img/quacam.png";
 import bobo from "../../asset/img/bobo.png";
 
-const SlideProduct = () => {
+const SlideProduct = ({ medias = [] }) => {
+  const rederSlice = medias.map(
+    (item) => (
+      <div key={item.id}>
+        <img src={item.url} alt='' />
+      </div>))
   return (
     <>
       <div className="silde-product">
         <div className="product-detail-left text-center">
-          <div>
-            <img src={rau} />
-          </div>
-          <div>
-            <img src={rau} />
-          </div>
-          <div>
-            <img src={rau} />
-          </div>
-          <div>
-            <img src={rau} />
-          </div>
+          {rederSlice}
         </div>
         <div className="product-detail-right text-center">
-          <img src={bobo} />
+          <img src={medias[0]?.url} />
         </div>
 
         <div className="star-product text-center">
