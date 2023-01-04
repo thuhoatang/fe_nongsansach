@@ -113,3 +113,11 @@
     background: #14606c;
     color: #ffffff;
 }
+
+
+.thanhtoan-right-product .list-product {
+    display: flex;
+    padding: 10px;
+    justify-content: flex-start;
+    flex-direction: column;
+}

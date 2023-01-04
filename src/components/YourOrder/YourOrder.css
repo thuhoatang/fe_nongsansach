@@ -1,0 +1,33 @@
+.your-order table {
+    /* border: 1px solid black; */
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* th {
+    background: #55a936;
+    color: white;
+    font-weight: initial;
+} */
+table tr th {
+    border: 0.5px solid rgb(188, 188, 188);
+    padding: 20px;
+    background: #55a936;
+    color: white;
+    text-align: center;
+    font-weight: initial;
+}
+
+table tr td {
+    border: 0.5px solid rgb(188, 188, 188);
+    padding: 10px 20px 10px 20px;
+}
+
+table tr td a {
+    text-decoration: none;
+}
+
+table tr td .trangThai {
+    color: #e9b353
+}

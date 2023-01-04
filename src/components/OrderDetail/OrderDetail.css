@@ -1,0 +1,29 @@
+.order-detail {
+    width: 100%;
+}
+
+.order-detail span {
+    font-size: 15px;
+}
+
+.order-detail .title {
+    font-size: 20px;
+
+}
+
+.order-detail p {
+    font-size: 14px;
+}
+
+.trangThai a {
+    color: #ff5c00
+}
+
+.list-product {
+    padding: 0px;
+    width: 100%;
+}
+
+.list-product table {
+    width: 100%;
+}
