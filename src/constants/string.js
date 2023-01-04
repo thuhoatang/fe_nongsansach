@@ -8,7 +8,7 @@ export const path = {
   signIn: "signin",
   personal: "ca-nhan",
   yourOrder: "ca-nhan/don-hang",
-  orderDetail: "don-hang/:id",
+  orderDetail: "ca-nhan/don-hang/:id",
 };
 
 export const categories = [

@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import "../pages/PersonalPage/PersonalPage.css";
@@ -10,7 +12,7 @@ const PersonalMaster = (props) => {
         <div className="menu-left">
           <b className="title">Trang tài khoản</b>
           <p>
-            Xin chào, <span>Tăng Thị Thu Hòa</span> !
+            Xin chào, <span>{props.auth?.name}</span> !
           </p>
 
           <div className="menu-info">
@@ -21,9 +23,9 @@ const PersonalMaster = (props) => {
             </p>
 
             <p>
-              <a href="#" className="title-info">
+              <Link to='/ca-nhan/don-hang' className="title-info">
                 Đơn hàng của bạn
-              </a>
+              </Link>
             </p>
             <p>
               <a href="#" className="title-info">
@@ -48,5 +50,10 @@ const PersonalMaster = (props) => {
     </>
   );
 };
+const mapstateToProps = (state) => {
+  return {
+    auth: state.auth
 
-export default PersonalMaster;
+  };
+};
+export default connect(mapstateToProps, {})(PersonalMaster)
