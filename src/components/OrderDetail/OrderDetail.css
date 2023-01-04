@@ -27,3 +27,26 @@
 .list-product table {
     width: 100%;
 }
+
+.info-user {
+    width: 100%;
+}
+
+.info-user .dia-chi {
+    width: 70%;
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.info-user .tong-thanh-toan {
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
