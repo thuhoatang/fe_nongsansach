@@ -12,3 +12,13 @@ export const getProduct = async (q, type = 'less') => {
         console.log(error);
     }
 };
+
+export const getProductSpecified = async (product_id) => {
+    try {
+        const res = await httpRequest.get('products/' + product_id, {
+        });
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+};

@@ -3,8 +3,10 @@ import "./CardProduct.css";
 import quacam from "../../asset/img/quacam.png";
 import { connect } from "react-redux";
 import { addCartItemAction } from "../../actions/cartItemAction";
+import { useNavigate } from "react-router-dom";
 
 const CardProduct = ({ product = { name: "#", price: 0 }, addCartItemAction }) => {
+  const navigate = useNavigate();
   return (
     <div className="card-product">
       <div className="product-thumbnail text-center">
@@ -24,7 +26,7 @@ const CardProduct = ({ product = { name: "#", price: 0 }, addCartItemAction }) =
 
       {/* hidden hover */}
       <div className="product-action d-flex justify-content-evenly">
-        <div className="icon icon_showproduct">
+        <div className="icon icon_showproduct" onClick={() => navigate(`/san-pham/${product.id}`)}>
           <iconify-icon
             style={{ fontSize: "25px", color: "" }}
             icon="ph:eye"

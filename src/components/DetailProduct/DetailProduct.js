@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { addCartItemAction } from "../../actions/cartItemAction";
 import Readmore from "../Readmore/Readmore";
 import "./DetailProduct.css";
 
-const DetailProduct = () => {
+const DetailProduct = ({ product, addCartItemAction }) => {
+  const [amount, setAmount] = useState(1);
+  const onClickChange = (number) => {
+    if (number > 0) {
+      setAmount(number)
+    }
+  }
+
   return (
     <div className="detail-product">
-      <h3 className="product-name">Ngũ cỗc</h3>
+      <h3 className="product-name">{product.name}</h3>
       <div className="d-flex">
         <p className="product-brand">
-          <b>Nhà sản xuất: </b>Farmer NONGDAN
+          <b>Nhà sản xuất: </b>{product.producer}
         </p>
         <p className="product-brand mx-4">
           <b>Tình trạng: </b>Còn hàng
@@ -19,11 +28,15 @@ const DetailProduct = () => {
       <div className="product-quantity">
         <b>Số lượng</b>
         <div className="mt-2">
-          <button>-</button>
-          <input />
-          <button>+</button>
+          <button onClick={() => onClickChange(amount - 1)}>-</button>
+          <input value={amount} pattern="[1-9][0-9]*" onChange={(e) => {
+            const str = e.target.value;
+            var matches = str.match(/(\d+)/);
+            setAmount(+matches[0] >= 0 ? +matches[0] : amount)
+          }} />
+          <button onClick={() => onClickChange(amount + 1)}>+</button>
 
-          <span className="product-price mx-5 pt-3">120.000 đ</span>
+          <span className="product-price mx-5 pt-3"> {new Intl.NumberFormat().format(product.price).replaceAll(",", " ")} đ</span>
         </div>
       </div>
 
@@ -32,24 +45,15 @@ const DetailProduct = () => {
         <b>Mô tả sản phẩm</b>
         <div className="content">
           <p>
-            <Readmore>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum
+            <Readmore>{product.description ?? " Ipsum is simply dummy text of the printing and typesetting"}
+
             </Readmore>
           </p>
         </div>
       </div>
 
       <div className="btn-addToCart">
-        <button>
+        <button onClick={() => { addCartItemAction(product.id, amount) }}>
           <iconify-icon
             icon="ps:shopping-cart"
             style={{
@@ -65,5 +69,5 @@ const DetailProduct = () => {
     </div>
   );
 };
+export default connect(null, { addCartItemAction })(DetailProduct);
 
-export default DetailProduct;
