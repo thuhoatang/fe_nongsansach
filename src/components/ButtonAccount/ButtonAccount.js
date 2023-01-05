@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./ButtonAccount.css";
 
-const ButtonAccount = () => {
+const ButtonAccount = ({ auth }) => {
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -24,20 +25,38 @@ const ButtonAccount = () => {
         </div>
 
         {isHovering && (
-          <div className="btn_acc_hover text-center">
+          auth == null ?
+            (
+              <div className="btn_acc_hover text-center">
 
-            <Link className="btn_account" to="#">
-              Đăng ký
-            </Link>
-            <Link className="btn_account" to="#">
-              Đăng nhập
-            </Link>
-            {/* <Link to="dư">đ</Link> */}
-          </div>
+                <Link className="btn_account" to="/sign-up">
+                  Đăng ký
+                </Link>
+                <Link className="btn_account" to="/signin">
+                  Đăng nhập
+                </Link>
+                {/* <Link to="dư">đ</Link> */}
+              </div>
+            ) : (<div className="btn_acc_hover text-center">
+
+              <Link className="btn_account" to="/ca-nhan">
+                Cá nhân
+              </Link>
+              <div className="btn_account" to="#">
+                Đăng xuất
+              </div>
+              {/* <Link to="dư">đ</Link> */}
+            </div>)
+
         )}
       </div>
     </>
   );
 };
+const mapstateToProps = (state) => {
+  return {
+    auth: state.auth
 
-export default ButtonAccount;
+  };
+};
+export default connect(mapstateToProps, {})(ButtonAccount);

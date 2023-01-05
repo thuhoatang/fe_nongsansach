@@ -23,7 +23,7 @@ const ThanhToan = ({ cart }) => {
   const onCLickSubmit = async () => {
     const error = {};
     if (Object.keys(error).length === 0) {
-      const response = await payment(infoInvoice);
+      const response = await payment({ ...infoInvoice, transport_fee: fee });
       navigate('/don-hang/' + response.id);
 
     }

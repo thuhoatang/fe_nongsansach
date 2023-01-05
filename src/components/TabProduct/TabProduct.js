@@ -55,9 +55,11 @@ const TabProduct = ({ categories }) => {
 
 
   const onClickCategory = (id) => {
-
     setCurrentCategory(id);
+  }
 
+  const onClickPagination = (page) => {
+    setPagination({ ...pagination, current: page })
   }
   const rederProducts = products.map((product) => (<CardProduct key={product.id} product={product} />))
 
@@ -73,7 +75,7 @@ const TabProduct = ({ categories }) => {
         </div>
       </div>
 
-      <Pagination pages={pagination.pages} current={pagination.current} setPagination={setPagination} />
+      <Pagination pages={pagination.pages} current={pagination.current} onClickPagination={onClickPagination} />
     </div>
   );
 };
