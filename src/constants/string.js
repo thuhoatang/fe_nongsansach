@@ -9,6 +9,7 @@ export const path = {
   personal: "ca-nhan",
   yourOrder: "ca-nhan/don-hang",
   orderDetail: "ca-nhan/don-hang/:id",
+  admin: "quan-tri-vien",
 };
 
 export const categories = [

@@ -1,0 +1,53 @@
+.form-singin {
+    width: 30%;
+    height: auto;
+    border: 1px solid #ccc;
+    margin: 30px auto;
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.form-singin input {
+    border-radius: 5px;
+    width: 100%;
+}
+
+.btn-signin {
+    border-radius: 5px;
+    border: 1px solid #306304;
+    padding: 5px 20px 5px 20px;
+    background: #306304;
+    color: white;
+}
+
+.form-text.error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.login-google p {
+    font-size: 14px;
+}
+
+.login-google .btn-login-google {
+    width: 100%;
+    height: auto;
+    border: 1px solid #e14b33;
+    border-radius: 5px;
+    background: #e14b33;
+    font-size: 14px;
+    padding: 10px;
+    color: white;
+}
+
+.dang-ki-tai-day {
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dang-ki-tai-day a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #306304;
+}
