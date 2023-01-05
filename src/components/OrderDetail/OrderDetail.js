@@ -1,21 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./OrderDetail.css";
 import ItemProductThanhToan from "../ItemProductThanhToan/ItemProductThanhToan";
+import { Link, useParams } from "react-router-dom";
+import { getInvoiceSpecified } from "../../service/paymentService";
 const OrderDetail = () => {
+  const { id } = useParams();
+  const [info, setInfo] = useState({});
+  const [invoiceItems, setInvoiceItems] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      const { invoice_items, ...info } = await getInvoiceSpecified(id);
+      setInfo(info);
+      setInvoiceItems(invoice_items.map((item) => {
+        item.product.price = item.price
+        return item;
+      }));
+
+      console.log(invoice_items, info);
+    }
+    getData();
+  }, [])
+
   return (
     <div className="order-detail">
       <div className="d-flex justify-content-between">
         <p className="title">
-          CHI TIẾT ĐƠN HÀNG <span>#1234 </span>
+          CHI TIẾT ĐƠN HÀNG <span>#{info.id} </span>
         </p>
 
         <p>
-          Ngày tạo: <span>12-22-2022</span>
+          Ngày tạo: <span>{info.created_at}</span>
         </p>
       </div>
       <div className="d-flex justify-content-between">
         <p>
-          Trạng thái thanh toán: <b className="trangThai">Chưa thanh toán</b>
+          Trạng thái thanh toán: <b className="trangThai">{info.status?.name}</b>
         </p>
         <p>
           Trạng thái vận chuyển: <b>Chưa chuyển</b>
@@ -29,20 +48,19 @@ const OrderDetail = () => {
 
             <th>Hành động</th>
           </tr>
-          <tr>
-            <td>
-              <ItemProductThanhToan
-                values={{
-                  product: { name: "Bưởi da cá", price: 235000 },
-                  quantity: 3,
-                }}
-              />
-            </td>
+          {invoiceItems.map((item) =>
+            <tr>
+              <td>
+                <ItemProductThanhToan
+                  values={item}
+                />
+              </td>
 
-            <td className="trangThai text-center">
-              <a href="#">Chưa được đánh giá</a>
-            </td>
-          </tr>
+              <td className="trangThai text-center">{info.status.id == 4 ? (item.reviewed == 1 ? <Link to={`/san-pham/${item.product.id}?invoice_item_id=${item.invoice_item_id}`}>Đã đánh giá</Link> : <Link to={`/san-pham/${item.product.id}?invoice_item_id=${item.invoice_item_id}`}>Chưa được đánh giá</Link>) : <p>Bạn chưa thể đánh giá</p>}
+
+              </td>
+            </tr>)}
+
         </table>
       </div>
 
@@ -50,27 +68,31 @@ const OrderDetail = () => {
         <div className="dia-chi">
           <p>
             {" "}
-            Họ và tên: <span>Tăng Thị Thu Hòa</span>
+            Họ và tên: <span>{info.name}</span>
           </p>
           <p>
-            Địa chỉ: <span>dabc, Thanh Sơn, Đà Nẵng</span>
+            Địa chỉ: <span>{info.address}</span>
           </p>
           <p>
-            Số điện thoại: <span>09 81274 7347</span>
+            Số điện thoại: <span>{info.phone}</span>
           </p>
         </div>
 
         <div className="tong-thanh-toan">
           <p>
             {" "}
-            Phí vận chuyển: <span>40.000 đ</span>
+            Phí vận chuyển: <span> {new Intl.NumberFormat()
+              .format(info.transport_fee)
+              .replaceAll(",", " ")} đ</span>
           </p>
           <p>
-            Tổng tiền: <span className="text-danger">234 000 đ</span>
+            Tổng tiền: <span className="text-danger">{new Intl.NumberFormat()
+              .format(info.total)
+              .replaceAll(",", " ")} đ</span>
           </p>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
