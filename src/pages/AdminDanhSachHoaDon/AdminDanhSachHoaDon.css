@@ -1,10 +1,9 @@
 /* header admin */
 .header-admin {
     width: 80%;
-    height: 100px;
+    height: 70px;
     margin-left: 20%;
-    background: #66ce92;
-    /* border-bottom: 1px solid #ccc; */
+    background: #fff0ca;
     text-align: right;
     position: fixed;
     box-shadow: rgba(112, 231, 14, 0.2) 0px 2px 8px 0px;
@@ -107,5 +106,5 @@
 .body-content-right {
     width: 80%;
     margin-left: 20%;
-    /* margin-top: 100px; */
+    height: 1000px
 }
