@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { logoutAction } from "../../actions/authAction";
 import "./ButtonAccount.css";
 
-const ButtonAccount = ({ auth }) => {
+const ButtonAccount = ({ auth, logoutAction }) => {
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -42,7 +43,7 @@ const ButtonAccount = ({ auth }) => {
               <Link className="btn_account" to="/ca-nhan">
                 Cá nhân
               </Link>
-              <div className="btn_account" to="#">
+              <div className="btn_account" onClick={() => logoutAction()}>
                 Đăng xuất
               </div>
               {/* <Link to="dư">đ</Link> */}
@@ -59,4 +60,4 @@ const mapstateToProps = (state) => {
 
   };
 };
-export default connect(mapstateToProps, {})(ButtonAccount);
+export default connect(mapstateToProps, { logoutAction })(ButtonAccount);
