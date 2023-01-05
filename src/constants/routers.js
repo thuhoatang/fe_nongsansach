@@ -1,8 +1,10 @@
 import OrderDetail from "../components/OrderDetail/OrderDetail";
 import YourOrder from "../components/YourOrder/YourOrder";
+import AdminMaster from "../layouts/AdminMaster";
 import ManageLayout from "../layouts/ManageLayout";
 import MasterLayout from "../layouts/MasterLayout";
 import PersonalMaster from "../layouts/PersonalMaster";
+import AdminDanhSachHoaDon from "../pages/AdminDanhSachHoaDon/AdminDanhSachHoaDon";
 import DanhMucSanPham from "../pages/DanhMucSanPham/DanhMucSanPham";
 import HomePage from "../pages/HomePage/HomePage";
 import Login from "../pages/Login/Login";
@@ -73,6 +75,14 @@ const routes = [
     component: OrderDetail,
     layout: PersonalMaster,
     pageUrl: path.orderDetail,
+  },
+
+  {
+    path: path.admin,
+    exact: true,
+    component: AdminDanhSachHoaDon,
+    layout: AdminMaster,
+    pageUrl: path.admin,
   },
 ];
 
