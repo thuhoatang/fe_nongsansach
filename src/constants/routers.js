@@ -1,17 +1,20 @@
-import OrderDetail from "../components/OrderDetail/OrderDetail";
+import DanhSachHoaDon from "../components/DanhSachHoaDon/DanhSachHoaDon";
+
 import YourOrder from "../components/YourOrder/YourOrder";
 import AdminMaster from "../layouts/AdminMaster";
 import ManageLayout from "../layouts/ManageLayout";
 import MasterLayout from "../layouts/MasterLayout";
 import PersonalMaster from "../layouts/PersonalMaster";
-import AdminDanhSachHoaDon from "../pages/AdminDanhSachHoaDon/AdminDanhSachHoaDon";
 import DanhMucSanPham from "../pages/DanhMucSanPham/DanhMucSanPham";
 import HomePage from "../pages/HomePage/HomePage";
 import Login from "../pages/Login/Login";
 import Payment from "../pages/Payment/Payment";
 import PersonalPage from "../pages/PersonalPage/PersonalPage";
+import OrderDetail from "../components/OrderDetail/OrderDetail";
 import ProductsPage from "../pages/ProductsPage/ProductsPage";
 import { path } from "./string";
+import LoginWithGoogle from "../pages/LoginWithGoogle/LoginWithGoogle";
+import AuthGoogle from "../pages/LoginWithGoogle/AuthGoogle";
 
 const routes = [
   {
@@ -80,9 +83,32 @@ const routes = [
   {
     path: path.admin,
     exact: true,
-    component: AdminDanhSachHoaDon,
+    component: DanhSachHoaDon,
     layout: AdminMaster,
     pageUrl: path.admin,
+  },
+
+  {
+    path: path.adminOrderDetail,
+    exact: true,
+    component: OrderDetail,
+    layout: AdminMaster,
+    pageUrl: path.adminOrderDetail,
+  },
+
+  {
+    path: path.googleSignIn,
+    exact: true,
+    component: LoginWithGoogle,
+    layout: MasterLayout,
+    pageUrl: path.googleSignIn,
+  },
+  {
+    path: path.googleAuth,
+    exact: true,
+    component: AuthGoogle,
+    layout: MasterLayout,
+    pageUrl: path.googleAuth,
   },
 ];
 
