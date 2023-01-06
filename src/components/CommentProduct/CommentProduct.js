@@ -6,7 +6,7 @@ import ItemComment from "../ItemComment/ItemComment";
 import Pagination from "../Pagination/Pagination";
 import YourComment from "../YourComment/YourComment";
 import "./CommentProduct.css";
-const CommentProduct = ({ reviews, auth, product_id, setReviews }) => {
+const CommentProduct = ({ reviews = [], auth, product_id, setReviews }) => {
 
   const [ratingSelected, setRatingSelected] = useState(
     {
@@ -86,7 +86,7 @@ const CommentProduct = ({ reviews, auth, product_id, setReviews }) => {
         </div>
 
         <div className="list-comment">
-          {reviews.items.map((item) => <ItemComment key={item.id} values={item} />)}
+          {reviews?.items?.map((item) => <ItemComment key={item.id} values={item} />)}
 
         </div>
 
