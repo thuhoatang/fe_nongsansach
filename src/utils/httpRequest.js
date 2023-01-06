@@ -3,8 +3,8 @@ import axios from 'axios';
 const httpRequest = axios.create({
     baseURL: 'http://127.0.0.1:8000/api/',
     validateStatus: function (status) {
-        // if (status === 401 && '/signin' !== window.location.pathname)
-        //     window.location.href = "/signin";
+        if (status === 401 && '/signin' !== window.location.pathname)
+            window.location.href = "/signin";
         if (status < 500) return true;
 
     }

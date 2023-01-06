@@ -24,7 +24,7 @@ const ThanhToan = ({ cart }) => {
     const error = {};
     if (Object.keys(error).length === 0) {
       const response = await payment({ ...infoInvoice, transport_fee: fee });
-      navigate('/don-hang/' + response.id);
+      navigate('/ca-nhan/don-hang/' + response.id);
 
     }
   }
