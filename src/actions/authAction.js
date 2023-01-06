@@ -28,7 +28,7 @@ export const logoutAction = () => async (dispatch, getState) => {
     const data = await signOut();
     if (data.error !== false) {
         dispatch({
-            type: statusAction.auth.SIGN_IN,
+            type: statusAction.auth.SIGN_OUT,
         });
         dispatch({
             type: statusAction.cart.CART_FETCH,
