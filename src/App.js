@@ -7,6 +7,7 @@ import { checkAuthAction } from './actions/authAction'
 import { connect } from "react-redux";
 import Spinner from "./components/Spinner/Spinner";
 import { changeStatusSpinner } from "./actions/spinnerActtion";
+import Notification from "./components/Notification/Notification";
 
 function App({
   fetchCategories,
@@ -45,6 +46,7 @@ function App({
         </Routes>
       </BrowserRouter>
       <Spinner />
+      <Notification />
     </>
   );
 }
