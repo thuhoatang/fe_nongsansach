@@ -21,3 +21,15 @@ export const checkAuth = async (data = {}) => {
 
     }
 };
+
+export const signOut = async (data = {}) => {
+    try {
+        const res = await httpRequest.post('log_out', {
+            data: data
+        });
+        return res;
+    } catch (error) {
+        console.log(error);
+
+    }
+};

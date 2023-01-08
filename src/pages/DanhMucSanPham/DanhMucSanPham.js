@@ -47,6 +47,7 @@ const DanhMucSanPham = ({ categories }) => {
       if (orderBy !== 0) {
         query = { ...query, ...orderBys[orderBy] }
       }
+      query.page = page;
 
       const data = await searchProduct(query);
       setProducts(data.products)

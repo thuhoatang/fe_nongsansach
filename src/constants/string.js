@@ -8,9 +8,9 @@ export const path = {
   signIn: "signin",
   personal: "ca-nhan",
   yourOrder: "ca-nhan/don-hang",
-  orderDetail: "don-hang/:id",
+  orderDetail: "ca-nhan/don-hang/:id",
   admin: "quan-tri-vien",
-  adminOrderDetail: "hoa-don-khach/:id",
+  adminOrderDetail: "quan-tri-vien/hoa-don-khach/:id",
   googleSignIn: "callback",
   googleAuth: "google-auth",
 };

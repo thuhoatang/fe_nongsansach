@@ -5,15 +5,23 @@ import { useEffect } from "react";
 import { fetchCategories } from "./actions/categoryAction";
 import { checkAuthAction } from './actions/authAction'
 import { connect } from "react-redux";
+import Spinner from "./components/Spinner/Spinner";
+import { changeStatusSpinner } from "./actions/spinnerActtion";
 
 function App({
   fetchCategories,
-  checkAuthAction
+  checkAuthAction,
+  changeStatusSpinner
 }) {
   useEffect(() => {
     const setup = async () => {
-      fetchCategories();
-      checkAuthAction();
+      changeStatusSpinner(true);
+      const cate = fetchCategories();
+      const check = checkAuthAction();
+
+      await Promise.all([cate, check]).then((values) => {
+        changeStatusSpinner(false)
+      });
     }
     setup();
   }, []);
@@ -36,10 +44,11 @@ function App({
           {/* <MasterLayout /> */}
         </Routes>
       </BrowserRouter>
+      <Spinner />
     </>
   );
 }
 export default connect(null, {
-  fetchCategories, checkAuthAction
+  fetchCategories, checkAuthAction, changeStatusSpinner
 })(App);
 // export default App;
