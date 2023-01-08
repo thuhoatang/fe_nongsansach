@@ -1,0 +1,48 @@
+.notification {
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgb(174, 171, 171, 0.3);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notification .body img {
+    width: 70px
+}
+
+.notification .body {
+    width: 350px;
+    background: white;
+    height: 210px;
+    border-radius: 5px;
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.notification .body .title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 10px
+}
+
+.notification .body .content {
+    font-size: 14px;
+    /* font-weight: bold; */
+    margin: 5px 10px;
+}
+
+.notification .body .btn-ok {
+    border: 1px solid orange;
+    font-size: 12px;
+    width: 100px;
+    height: 30px;
+    margin: 10px;
+    border-radius: 5px;
+    background: orange;
+    color: white;
+}
