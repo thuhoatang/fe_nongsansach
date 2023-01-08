@@ -1,0 +1,19 @@
+.order-detail {
+    padding: 20px;
+}
+
+.btn-action select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #fff0ca;
+}
+
+.btn-action select:focus {
+    outline: none;
+
+}
+
+.btn-action {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}

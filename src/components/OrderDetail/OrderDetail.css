@@ -36,17 +36,22 @@
     width: 70%;
     height: auto;
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
     border-radius: 5px;
-    margin: 10px;
+    margin-top: 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .info-user .tong-thanh-toan {
+    width: 30%;
     height: auto;
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
-    margin: 10px;
+    margin-top: 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.list-product tr td {
+    background: white;
 }
