@@ -12,6 +12,8 @@ const statusAction = {
         CART_FETCH: 'CART_FETCH',
         EXPANDED: 'EXPANDED'
 
+    }, spinner: {
+        CHANGE_STATUS: 'CHANGE_STATUS',
     }
 }
 export default statusAction;
