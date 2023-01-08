@@ -6,6 +6,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import { useParams } from "react-router-dom";
 import { searchProduct } from "../../service/searchService";
 import { connect } from "react-redux";
+import { changeStatusSpinner } from "../../actions/spinnerActtion";
 
 const orderBys = {
   0: null,
@@ -14,7 +15,7 @@ const orderBys = {
   3: { by: 'rate', order: 'desc' },
   4: { by: 'rate', order: 'asc' },
 }
-const DanhMucSanPham = ({ categories }) => {
+const DanhMucSanPham = ({ categories, changeStatusSpinner }) => {
   const { danhmuc_id } = useParams();
   const [products, setProducts] = useState([]);
   const [pagination, setPagination] = useState({ current: 1, pages: 0 });
@@ -24,9 +25,13 @@ const DanhMucSanPham = ({ categories }) => {
 
   useEffect(() => {
     const getData = async () => {
+      changeStatusSpinner(true)
+
       const data = await searchProduct({ 'categories[]': danhmuc_id, limit: 6 });
       setProducts(data.products)
       setPagination({ pages: data.pages, current: 1 })
+      changeStatusSpinner(false)
+
     }
     getData();
   }, [])
@@ -34,6 +39,8 @@ const DanhMucSanPham = ({ categories }) => {
 
   const onClickPagination = (page) => {
     const getData = async () => {
+      changeStatusSpinner(true)
+
       let query = { 'categories[]': danhmuc_id, limit: 6, }
 
       if (price.start != '' && price.start != null) {
@@ -52,11 +59,15 @@ const DanhMucSanPham = ({ categories }) => {
       const data = await searchProduct(query);
       setProducts(data.products)
       setPagination({ ...pagination, current: page })
+      changeStatusSpinner(false)
+
     }
     getData();
   };
 
   const onClickBtnApplay = () => {
+    changeStatusSpinner(true)
+
     const getData = async () => {
       let query = { 'categories[]': danhmuc_id, limit: 6, }
 
@@ -73,6 +84,8 @@ const DanhMucSanPham = ({ categories }) => {
       const data = await searchProduct(query);
       setProducts(data.products)
       setPagination({ current: 1, pages: data.pages })
+      changeStatusSpinner(false)
+
     }
     getData();
   }
@@ -110,4 +123,4 @@ const mapStasteToProps = (state) => {
     categories: state.categories
   }
 }
-export default connect(mapStasteToProps)(DanhMucSanPham);
+export default connect(mapStasteToProps, { changeStatusSpinner })(DanhMucSanPham);

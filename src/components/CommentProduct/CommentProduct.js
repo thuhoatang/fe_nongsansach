@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { changeStatusSpinner } from "../../actions/spinnerActtion";
 import { checkReview, getReviewByProduct } from "../../service/reviewService";
 import getQueryParams from "../../utils/queryParams";
 import ItemComment from "../ItemComment/ItemComment";
 import Pagination from "../Pagination/Pagination";
 import YourComment from "../YourComment/YourComment";
 import "./CommentProduct.css";
-const CommentProduct = ({ reviews = [], auth, product_id, setReviews }) => {
+const CommentProduct = ({ reviews = [], auth, product_id, setReviews, changeStatusSpinner }) => {
 
   const [ratingSelected, setRatingSelected] = useState(
     {
@@ -52,8 +53,12 @@ const CommentProduct = ({ reviews = [], auth, product_id, setReviews }) => {
   }
   useEffect(() => { setCurrentPage(1) }, [ratingSelected]);
   useEffect(() => {
-
-    getData();
+    const aw = async () => {
+      changeStatusSpinner(true)
+      await getData();
+      changeStatusSpinner(false)
+    }
+    aw();
   }, [currentPage, ratingSelected])
   return (
     <>
@@ -98,4 +103,4 @@ const CommentProduct = ({ reviews = [], auth, product_id, setReviews }) => {
 const mapStateToProps = (state) => {
   return { auth: state.auth }
 }
-export default connect(mapStateToProps)(CommentProduct);
+export default connect(mapStateToProps, { changeStatusSpinner })(CommentProduct);

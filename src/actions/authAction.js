@@ -42,7 +42,12 @@ export const checkAuthAction = () => async (dispatch, getState) => {
 }
 
 export const logoutAction = () => async (dispatch, getState) => {
+    dispatch({
+        type: statusAction.spinner.CHANGE_STATUS,
+        payload: true,
+    });
     const data = await signOut();
+
     if (data.error !== false) {
         dispatch({
             type: statusAction.auth.SIGN_OUT,
@@ -53,4 +58,8 @@ export const logoutAction = () => async (dispatch, getState) => {
         });
     }
 
+    dispatch({
+        type: statusAction.spinner.CHANGE_STATUS,
+        payload: false,
+    });
 }
