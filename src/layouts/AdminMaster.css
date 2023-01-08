@@ -104,6 +104,7 @@
 
 /* content right */
 .body-content-right {
+    background-image: url(../asset/img/bg_02.png);
     width: 80%;
     margin-left: 20%;
 }

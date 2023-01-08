@@ -15,6 +15,7 @@ import ProductsPage from "../pages/ProductsPage/ProductsPage";
 import { path } from "./string";
 import LoginWithGoogle from "../pages/LoginWithGoogle/LoginWithGoogle";
 import AuthGoogle from "../pages/LoginWithGoogle/AuthGoogle";
+import OrderDetailAd from "../pages/OrderDetail_ad/OrderDetailAd";
 
 const routes = [
   {
@@ -91,7 +92,7 @@ const routes = [
   {
     path: path.adminOrderDetail,
     exact: true,
-    component: OrderDetail,
+    component: OrderDetailAd,
     layout: AdminMaster,
     pageUrl: path.adminOrderDetail,
   },

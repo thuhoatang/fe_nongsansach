@@ -47,7 +47,7 @@ const OrderDetail = () => {
       </div>
 
       <div className="info-user d-flex">
-        <div className="dia-chi">
+        <div className="dia-chi bg-white">
           <p>
             {" "}
             Họ và tên: <span>Tăng Thị Thu Hòa</span>
@@ -60,7 +60,7 @@ const OrderDetail = () => {
           </p>
         </div>
 
-        <div className="tong-thanh-toan">
+        <div className="tong-thanh-toan bg-white">
           <p>
             {" "}
             Phí vận chuyển: <span>40.000 đ</span>
