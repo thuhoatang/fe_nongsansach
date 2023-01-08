@@ -3,13 +3,30 @@ import { checkAuth, signIn, signOut } from '../service/authService';
 
 export const signInAction = (values) => async (dispatch, getState) => {
     const data = await signIn(values);
-    dispatch({
-        type: statusAction.auth.SIGN_IN,
-        payload: data,
-    });
+    console.log(data);
+    if (data.error) {
+
+        dispatch({
+            type: statusAction.auth.SIGN_IN,
+            payload: { error: data.error },
+        });
+        return false;
+    } else {
+        dispatch({
+            type: statusAction.auth.SIGN_IN,
+            payload: data.user,
+        });
+        dispatch({
+            type: statusAction.cart.CART_FETCH,
+            payload: data.cart,
+        });
+        return true;
+
+    }
+
 }
 
-export const checkAuthAction = (values) => async (dispatch, getState) => {
+export const checkAuthAction = () => async (dispatch, getState) => {
     const data = await checkAuth();
     if (data.error !== false) {
         dispatch({

@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import "./Login.css";
 import { connect } from "react-redux";
 import { signInAction } from "../../actions/authAction";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ signInAction, auth }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
   const onFormSubmit = (e) => {
     e.preventDefault();
     const submit = async () => {
-      signInAction({ username: username, password: password });
+      const res = await signInAction({ username: username, password: password });
+      if (res) {
+        navigate('/trang-chu');
+      }
     };
 
     submit();

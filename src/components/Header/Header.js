@@ -10,7 +10,6 @@ import MenuHeader from "../MenuHeader/MenuHeader";
 import { connect } from "react-redux";
 
 const Header = ({ auth }) => {
-  console.log(auth);
   return (
     <>
       <nav className="navbar navbar-light bg-white">

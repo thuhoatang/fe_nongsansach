@@ -5,8 +5,9 @@ import ItemProductThanhToan from "../ItemProductThanhToan/ItemProductThanhToan";
 import { connect } from "react-redux";
 import { payment } from "../../service/paymentService";
 import { useNavigate } from "react-router-dom";
-
-const ThanhToan = ({ cart }) => {
+import { checkAuthAction } from "../../actions/authAction";
+import { expandedCartAction } from "../../actions/cartItemAction";
+const ThanhToan = ({ cart, checkAuthAction, expandedCartAction }) => {
   const [fee, setFee] = useState(0);
   const [infoInvoice, setInfoInvoice] = useState({})
   const navigate = useNavigate();
@@ -24,6 +25,8 @@ const ThanhToan = ({ cart }) => {
     const error = {};
     if (Object.keys(error).length === 0) {
       const response = await payment({ ...infoInvoice, transport_fee: fee });
+      checkAuthAction();
+      expandedCartAction(false);
       navigate('/ca-nhan/don-hang/' + response.id);
 
     }
@@ -100,4 +103,4 @@ const ThanhToan = ({ cart }) => {
 const mapStatetoProps = (state) => {
   return { cart: state.cart }
 }
-export default connect(mapStatetoProps, {})(ThanhToan);
+export default connect(mapStatetoProps, { checkAuthAction, expandedCartAction })(ThanhToan);
