@@ -10,6 +10,9 @@ const authReducer = (state = initValue, action) => {
 
             const { api_token, ...data } = action.payload;
             return data;
+
+        case statusAction.auth.SIGN_OUT:
+            return null;
         default:
             return state;
     }
