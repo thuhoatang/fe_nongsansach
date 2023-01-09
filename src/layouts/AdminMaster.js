@@ -1,11 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import logo_img from "../asset/img/logo_img.png";
 import "./AdminMaster.css";
 
 const AdminMaster = ({ children, auth }) => {
-  return <>{[1, 2, 3].includes(auth?.role_id) ? (
+  const navigate = useNavigate();
+  const [permission, setPermission] = useState(1);
+  useEffect(() => {
+    if (auth?.message) {
+      navigate('/signin')
+    }
+    if ([1, 2, 3].includes(auth?.role_id) && auth !== null) {
+      setPermission(2);
+    }
+  }, [auth])
+  return <>{permission === 2 ? (
     <div>
       <div className="d-flex justify-content-between">
         <div className="menu-left-admin">
@@ -62,7 +72,7 @@ const AdminMaster = ({ children, auth }) => {
         </div>
       </div>
     </div>
-  ) : <Navigate to="/signin" />}</>;
+  ) : ''}</>;
 };
 const mapStatetoProps = (state) => {
   return {

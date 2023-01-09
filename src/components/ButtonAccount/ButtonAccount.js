@@ -29,7 +29,7 @@ const ButtonAccount = ({ auth, logoutAction, displayNoticationAction }) => {
         </div>
 
         {isHovering && (
-          auth == null ?
+          auth == null || auth?.message ?
             (
               <div className="btn_acc_hover text-center">
 

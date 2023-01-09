@@ -23,7 +23,7 @@ const Header = ({ auth }) => {
           <div className="d-flex px-5">
             <ButtonAccount />
 
-            {auth == null ? "" : (auth.error !== undefined ? "" : <ButtonCart />)}
+            {auth == null || auth.error !== undefined || auth?.message ? "" : <ButtonCart />}
 
           </div>
         </div>

@@ -37,6 +37,12 @@ export const checkAuthAction = () => async (dispatch, getState) => {
             type: statusAction.cart.CART_FETCH,
             payload: data.cart,
         });
+    } else {
+        dispatch({
+            type: statusAction.auth.SIGN_IN,
+            payload: { message: 'Chưa đăng nhập' },
+        });
+
     }
 
 }
