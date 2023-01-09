@@ -1,20 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const ItemDSHD = ({ color }) => {
+const ItemDSHD = ({ color, values }) => {
+  const date = new Date(values.created_at);
   return (
-    <div className="item-dshd d-flex justify-content-between my-3">
+    <div className="item-dshd d-flex justify-content-between my-3" style={values.status.id === 1 ? { backgroundColor: '#D1ECF1' } : null}>
       <div className="left">
         <p>
-          ĐƠN HÀNG: <span>#1234</span>
+          ĐƠN HÀNG: <span>#{values.id}</span>
         </p>
-        <p>Tăng Thị Thu Hòa</p>
-        <p>23 Ông Ích Khiêm, Hải Châu, Đà Nẵng</p>
+        <p>{values.name}</p>
+        <p>{values.address}</p>
       </div>
       <div className="right">
-        <p className="thoi-gian">11: 00 22-12-2023</p>
-        <p>123.000 đ</p>
+        <p className="thoi-gian">{`${date.getHours()}: ${date.getMinutes()} ${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`}</p>
+        <p>{new Intl.NumberFormat().format(values.total).replaceAll(",", " ")} đ</p>
         <p>
-          <a href="#">Xem chi tiết</a>
+          <Link to={"/quan-tri-vien/hoa-don-khach/" + values.id}>Xem chi tiết</Link>
         </p>
       </div>
     </div>

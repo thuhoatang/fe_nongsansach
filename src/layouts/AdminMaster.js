@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { Navigate } from "react-router-dom";
 import logo_img from "../asset/img/logo_img.png";
 import "./AdminMaster.css";
 
-const AdminMaster = (props) => {
-  return (
+const AdminMaster = ({ children, auth }) => {
+  return <>{[1, 2, 3].includes(auth?.role_id) ? (
     <div>
       <div className="d-flex justify-content-between">
         <div className="menu-left-admin">
@@ -56,11 +58,16 @@ const AdminMaster = (props) => {
           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
           commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
           velit esse cillum dolore eu fugiat nulla pariatur.
-          {props.children}
+          {children}
         </div>
       </div>
     </div>
-  );
+  ) : <Navigate to="/signin" />}</>;
 };
+const mapStatetoProps = (state) => {
+  return {
+    auth: state.auth
 
-export default AdminMaster;
+  };
+};
+export default connect(mapStatetoProps)(AdminMaster);

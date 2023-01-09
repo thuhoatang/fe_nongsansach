@@ -46,6 +46,12 @@ const ButtonAccount = ({ auth, logoutAction, displayNoticationAction }) => {
               <Link className="btn_account" to="/ca-nhan">
                 Cá nhân
               </Link>
+              {[1, 2, 3].includes(auth?.role_id) ?
+                (
+                  <Link className="btn_account" to="/quan-tri-vien">
+                    Quản lí
+                  </Link>
+                ) : ''}
               <div className="btn_account"
                 onClick={async () => {
                   await logoutAction();
