@@ -3,8 +3,8 @@ import "./Login.css";
 import { connect } from "react-redux";
 import { signInAction } from "../../actions/authAction";
 import { useNavigate } from "react-router-dom";
-
-const Login = ({ signInAction, auth }) => {
+import { displayNoticationAction } from "../../actions/notficationAction";
+const Login = ({ signInAction, auth, displayNoticationAction }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,6 +13,7 @@ const Login = ({ signInAction, auth }) => {
     e.preventDefault();
     const submit = async () => {
       const res = await signInAction({ username: username, password: password });
+      displayNoticationAction('Bạn đã đăng nhập thành công!');
       if (res) {
         navigate('/trang-chu');
       }
@@ -77,5 +78,5 @@ const mapstateToProps = (state) => {
     auth: state.auth,
   };
 };
-export default connect(mapstateToProps, { signInAction })(Login);
+export default connect(mapstateToProps, { signInAction, displayNoticationAction })(Login);
 // export default Login;
