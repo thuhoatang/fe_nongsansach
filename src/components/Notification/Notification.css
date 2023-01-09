@@ -24,6 +24,14 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.notification .body {
+    position: relative;
+    animation-name: example;
+    animation-duration: 3s;
+}
+
+
+
 .notification .body .title {
     font-size: 15px;
     font-weight: bold;
@@ -45,4 +53,16 @@
     border-radius: 5px;
     background: orange;
     color: white;
+}
+
+@keyframes example {
+    0% {
+
+        left: 0px;
+        top: -6660px;
+    }
+
+    50% {
+        background-color: rgb(255, 255, 255);
+    }
 }
