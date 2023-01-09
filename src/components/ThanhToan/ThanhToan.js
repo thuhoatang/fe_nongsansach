@@ -24,7 +24,8 @@ const ThanhToan = ({ cart, checkAuthAction, expandedCartAction }) => {
   const onCLickSubmit = async () => {
     const error = {};
     if (Object.keys(error).length === 0) {
-      const response = await payment({ ...infoInvoice, transport_fee: fee });
+
+      const response = await payment({ ...infoInvoice, transport_fee: fee, address: `${infoInvoice.address}, ${infoInvoice.wardName}, ${infoInvoice.districtName}, ${infoInvoice.provinceName}` });
       checkAuthAction();
       expandedCartAction(false);
       navigate('/ca-nhan/don-hang/' + response.id);
