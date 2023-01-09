@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logoutAction } from "../../actions/authAction";
+import { displayNoticationAction } from "../../actions/notficationAction";
 import "./ButtonAccount.css";
 
-const ButtonAccount = ({ auth, logoutAction }) => {
+const ButtonAccount = ({ auth, logoutAction, displayNoticationAction }) => {
   const [isHovering, setIsHovering] = useState(false);
+  const navigate = useNavigate();
+
   const handleMouseOver = () => {
     setIsHovering(true);
   };
@@ -43,7 +46,13 @@ const ButtonAccount = ({ auth, logoutAction }) => {
               <Link className="btn_account" to="/ca-nhan">
                 Cá nhân
               </Link>
-              <div className="btn_account" onClick={() => logoutAction()}>
+              <div className="btn_account"
+                onClick={async () => {
+                  await logoutAction();
+                  navigate('/signin')
+                  displayNoticationAction('Bạn đã đăng xuất thành công!', 1000);
+
+                }}>
                 Đăng xuất
               </div>
               {/* <Link to="dư">đ</Link> */}
@@ -60,4 +69,4 @@ const mapstateToProps = (state) => {
 
   };
 };
-export default connect(mapstateToProps, { logoutAction })(ButtonAccount);
+export default connect(mapstateToProps, { logoutAction, displayNoticationAction })(ButtonAccount);
