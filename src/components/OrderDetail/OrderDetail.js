@@ -3,23 +3,29 @@ import "./OrderDetail.css";
 import ItemProductThanhToan from "../ItemProductThanhToan/ItemProductThanhToan";
 import { Link, useParams } from "react-router-dom";
 import { getInvoiceSpecified } from "../../service/paymentService";
-const OrderDetail = () => {
+import { changeStatusSpinner } from "../../actions/spinnerActtion";
+import { connect } from "react-redux";
+import { displayNoticationAction } from "../../actions/notficationAction";
+const OrderDetail = ({ setInvoice = () => { }, invoice = {}, changeStatusSpinner, displayNoticationAction }) => {
   const { id } = useParams();
-  const [info, setInfo] = useState({});
+  const [info, setInfo] = useState(invoice);
   const [invoiceItems, setInvoiceItems] = useState([]);
+  const date = new Date(info.created_at);
   useEffect(() => {
     const getData = async () => {
+      changeStatusSpinner(true)
       const { invoice_items, ...info } = await getInvoiceSpecified(id);
       setInfo(info);
+      setInvoice(info);
       setInvoiceItems(invoice_items.map((item) => {
         item.product.price = item.price
         return item;
       }));
+      changeStatusSpinner(false)
 
-      console.log(invoice_items, info);
     }
     getData();
-  }, [])
+  }, [invoice.status_id])
 
   return (
     <div className="order-detail">
@@ -29,7 +35,7 @@ const OrderDetail = () => {
         </p>
 
         <p>
-          Ngày tạo: <span>{info.created_at}</span>
+          Ngày tạo: <span>{`${date.getHours()}: ${date.getMinutes()} ${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`}</span>
         </p>
       </div>
       <div className="d-flex justify-content-between">
@@ -96,4 +102,4 @@ const OrderDetail = () => {
   );
 };
 
-export default OrderDetail;
+export default connect(null, { changeStatusSpinner, displayNoticationAction })(OrderDetail);

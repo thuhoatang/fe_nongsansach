@@ -11,7 +11,7 @@ const CardProduct = ({ product = { name: "#", price: 0 }, addCartItemAction }) =
     <div className="card-product">
       <div className="product-thumbnail text-center">
         <img alt="" src={product?.medias?.[0]?.url ?? quacam} />
-        <p className="title_hethang">Hết hàng</p>
+        {/* <p className="title_hethang">Hết hàng</p> */}
       </div>
 
       <div className="product-info text-center my-4">

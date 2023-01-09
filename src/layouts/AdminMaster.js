@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
 import logo_img from "../asset/img/logo_img.png";
 import "./AdminMaster.css";
 
-const AdminMaster = (props) => {
-  return (
+const AdminMaster = ({ children, auth }) => {
+  const navigate = useNavigate();
+  const [permission, setPermission] = useState(1);
+  useEffect(() => {
+    if (auth?.message) {
+      navigate('/signin')
+    }
+    if ([1, 2, 3].includes(auth?.role_id) && auth !== null) {
+      setPermission(2);
+    }
+  }, [auth])
+  return <>{permission === 2 ? (
     <div>
       <div className="d-flex justify-content-between">
         <div className="menu-left-admin">
@@ -56,11 +68,16 @@ const AdminMaster = (props) => {
           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
           commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
           velit esse cillum dolore eu fugiat nulla pariatur.
-          {props.children}
+          {children}
         </div>
       </div>
     </div>
-  );
+  ) : ''}</>;
 };
+const mapStatetoProps = (state) => {
+  return {
+    auth: state.auth
 
-export default AdminMaster;
+  };
+};
+export default connect(mapStatetoProps)(AdminMaster);

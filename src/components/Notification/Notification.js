@@ -1,19 +1,26 @@
 import React from "react";
 import "./Notification.css";
 import icon from "../../asset/img/iconTB.png";
+import { connect } from "react-redux";
 
-const Notification = () => {
+const Notification = ({ notification }) => {
   return (
-    <div className="notification text-center">
-      <div className="body">
-        <p className="title">Thông báo</p>
-        <img src={icon} />
-        <p className="content">Bạn đã thêm vào giỏ hàng thành công!</p>
+    <>{notification.status &&
+      (<div className="notification text-center">
+        <div className="body">
+          <p className="title">Thông báo</p>
+          <img src={icon} />
+          <p className="content">{notification.message}</p>
 
-        <button className="btn-ok">OK</button>
-      </div>
-    </div>
+          <button className="btn-ok">OK</button>
+        </div>
+      </div>)}
+
+    </>
+
   );
 };
-
-export default Notification;
+const mapStateToProps = (state) => {
+  return { notification: state.notification }
+}
+export default connect(mapStateToProps)(Notification);

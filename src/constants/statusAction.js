@@ -14,6 +14,10 @@ const statusAction = {
 
     }, spinner: {
         CHANGE_STATUS: 'CHANGE_STATUS',
+    },
+    notification: {
+        DISPLAY_NOTIFICATION: 'DISPLAY_NOTIFICATION',
+        HIDDEN_NOTIFICATION: 'HIDDEN_NOTIFICATION'
     }
 }
 export default statusAction;
