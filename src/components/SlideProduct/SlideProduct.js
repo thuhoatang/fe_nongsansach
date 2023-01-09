@@ -3,7 +3,7 @@ import "./SlideProduct.css";
 import rau from "../../asset/img/quacam.png";
 import bobo from "../../asset/img/bobo.png";
 
-const SlideProduct = ({ medias = [] }) => {
+const SlideProduct = ({ medias = [], rating_rate }) => {
   const rederSlice = medias.map(
     (item) => (
       <div key={item.id}>
@@ -20,7 +20,7 @@ const SlideProduct = ({ medias = [] }) => {
         </div>
 
         <div className="star-product text-center">
-          <b>4.5</b>
+          <b>{rating_rate}</b>
           <iconify-icon
             icon="ic:round-star-rate"
             style={{

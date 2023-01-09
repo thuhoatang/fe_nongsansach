@@ -103,7 +103,7 @@ const ThongTinNguoiNhan = ({ weight, setFee, setInfoInvoice, infoInvoice }) => {
           <select value={provinces.selected} className="" aria-label="Default select example"
             onChange={(e) => {
               setProvinces({ ...provinces, selected: e.target.value })
-              setInfoInvoice({ ...infoInvoice, province_id: e.target.value })
+              setInfoInvoice({ ...infoInvoice, province_id: e.target.value, provinceName: e.target.selectedOptions[0].text })
 
             }}>
             <option value={true} >Chọn tỉnh\thành phố</option>
@@ -116,7 +116,7 @@ const ThongTinNguoiNhan = ({ weight, setFee, setInfoInvoice, infoInvoice }) => {
           <select value={districts.selected} className="" aria-label="Default select example"
             onChange={(e) => {
               setDistricts({ ...districts, selected: e.target.value })
-              setInfoInvoice({ ...infoInvoice, district_id: e.target.value })
+              setInfoInvoice({ ...infoInvoice, district_id: e.target.value, districtName: e.target.selectedOptions[0].text })
 
             }
 
@@ -131,7 +131,7 @@ const ThongTinNguoiNhan = ({ weight, setFee, setInfoInvoice, infoInvoice }) => {
           <p>Chọn phường/ xã</p>
           <select value={wards.selected} onChange={(e) => {
             setWards({ ...wards, selected: e.target.value })
-            setInfoInvoice({ ...infoInvoice, ward_id: e.target.value })
+            setInfoInvoice({ ...infoInvoice, ward_id: e.target.value, wardName: e.target.selectedOptions[0].text })
           }} className="" aria-label="Default select example">
             <option value={true}>Chọn phường/xã</option>
             {wards.items.map((item) => <option key={item.WardCode} value={item.WardCode}>{item.WardName}</option>)}

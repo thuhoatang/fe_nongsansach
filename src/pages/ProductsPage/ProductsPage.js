@@ -29,7 +29,7 @@ const ProductsPage = ({ changeStatusSpinner }) => {
   return (
     <>
       <div className="container my-5 d-flex justify-content-between">
-        <SlideProduct medias={product.medias} />
+        <SlideProduct medias={product.medias} rating_rate={product.rating_rate} />
 
         <DetailProduct product={product} />
       </div>
