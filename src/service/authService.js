@@ -10,6 +10,17 @@ export const signIn = async (data = {}) => {
 
     }
 };
+export const signInWithGoogle = async (data = {}) => {
+    try {
+        const res = await httpRequest.post('sign_in_with_google', {
+            data: data
+        });
+        return res;
+    } catch (error) {
+        console.log(error);
+
+    }
+};
 
 export const checkAuth = async (data = {}) => {
     try {
