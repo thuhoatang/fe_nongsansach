@@ -10,6 +10,7 @@
 }
 
 .product-quantity input {
+    text-align: center;
     border-top: 1px solid #55a936;
     border-bottom: 1px solid #55a936;
     border-left: none;

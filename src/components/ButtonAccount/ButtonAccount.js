@@ -20,11 +20,12 @@ const ButtonAccount = ({ auth, logoutAction, displayNoticationAction }) => {
     <>
       <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
         <div>
-          <button className="btn_icon_acc mx-2">
-            <iconify-icon
+          <button className="btn_icon_acc mx-2" style={auth == null || auth?.message || auth?.error ? {} : { backgroundImage: `url(${auth?.avatar})` }}>
+            {auth == null || auth?.message || auth?.error ? (<iconify-icon
               style={{ fontSize: "30px", color: "white" }}
               icon="mdi-light:account"
-            ></iconify-icon>
+            ></iconify-icon>) : ''}
+
           </button>
         </div>
 
