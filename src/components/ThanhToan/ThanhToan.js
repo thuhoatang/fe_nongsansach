@@ -49,7 +49,7 @@ const ThanhToan = ({ cart, checkAuthAction, expandedCartAction }) => {
 
       <div className="thanhtoan-right">
         <p className="thanhtoan-right-title">
-          Đơn hàng <span>(10 sản phẩm)</span>{" "}
+          Đơn hàng <span>({cart.amount} sản phẩm)</span>{" "}
         </p>
 
         <div className="thanhtoan-right-product">

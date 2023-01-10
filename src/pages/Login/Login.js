@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { connect } from "react-redux";
-import { signInAction } from "../../actions/authAction";
+import { signInAction, signInWithGoogleAction } from "../../actions/authAction";
 import { useNavigate } from "react-router-dom";
 import { displayNoticationAction } from "../../actions/notficationAction";
-const Login = ({ signInAction, auth, displayNoticationAction }) => {
+import { gapi } from "gapi-script";
+const Login = ({ signInAction, auth, displayNoticationAction, signInWithGoogleAction }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,6 +22,34 @@ const Login = ({ signInAction, auth, displayNoticationAction }) => {
 
     submit();
   };
+  const clientId = '409778289628-qv33ds56lv54pruam4ti7dkl2550pj4i.apps.googleusercontent.com';
+
+  const onClickGoogbleButton = () => {
+    const getdata = async () => {
+
+      const initClient = () => {
+        gapi.client.init({
+          clientId: clientId,
+          scope: 'email'
+        });
+      };
+      await gapi.load('client:auth2', initClient);
+      await gapi.auth2.getAuthInstance().signIn()
+      const profile = await gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
+      // console.log(profile);
+      const res = await signInWithGoogleAction({
+        name: profile.getName(),
+        email: profile.getEmail(),
+        google_id: profile.getId(),
+        avatar: profile.getImageUrl()
+      });
+      if (res) {
+        navigate('/trang-chu');
+      }
+    }
+    getdata();
+
+  }
   return (
     <div className="container form-singin text-center">
       <form onSubmit={onFormSubmit}>
@@ -67,7 +96,7 @@ const Login = ({ signInAction, auth, displayNoticationAction }) => {
       <div className="login-google">
         <p className="my-3">Hoặc đăng nhập bằng</p>
 
-        <button className="btn-login-google">Google</button>
+        <button className="btn-login-google" onClick={() => { onClickGoogbleButton(); }}>Google</button>
       </div>
     </div>
   );
@@ -78,5 +107,5 @@ const mapstateToProps = (state) => {
     auth: state.auth,
   };
 };
-export default connect(mapstateToProps, { signInAction, displayNoticationAction })(Login);
+export default connect(mapstateToProps, { signInAction, displayNoticationAction, signInWithGoogleAction })(Login);
 // export default Login;

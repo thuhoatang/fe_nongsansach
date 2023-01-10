@@ -4,6 +4,8 @@
     border-radius: 50%;
     background-color: #339538;
     border: none;
+    /* background-image: url(https://i.pinimg.com/236x/6b/8b/a1/6b8ba1cbea0b91298960d4c00faca009.jpg); */
+    background-size: 100% 100%;
 }
 
 .btn_acc_hover {
