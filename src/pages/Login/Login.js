@@ -36,11 +36,12 @@ const Login = ({ signInAction, auth, displayNoticationAction, signInWithGoogleAc
       await gapi.load('client:auth2', initClient);
       await gapi.auth2.getAuthInstance().signIn()
       const profile = await gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
+      // console.log(profile);
       const res = await signInWithGoogleAction({
         name: profile.getName(),
         email: profile.getEmail(),
-        google_id: profile.getId()
-
+        google_id: profile.getId(),
+        avatar: profile.getImageUrl()
       });
       if (res) {
         navigate('/trang-chu');
